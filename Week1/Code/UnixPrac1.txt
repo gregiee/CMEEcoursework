@@ -1,0 +1,9 @@
+#1 find . -type f -exec wc -l {} \;
+
+#2 cat -n E.coli.fasta | tail -n +2
+
+#3 cat E.coli.fasta | tail -n +2 | tr -d '\r\n' | wc -m
+
+#4 grep -o "ATGC" E.coli.fasta | wc -l
+
+#5 echo $(grep -o ["A","T"] E.coli.fasta | wc -l)/$(grep -o ["G","C"] E.coli.fasta | wc -l) | bc -l

@@ -1,9 +1,24 @@
-#1 find . -type f -exec wc -l {} \;
+#1  find all file with a extension "fasta" under given data directory and count the lines in them respectively(with xargs)
 
-#2 cat -n E.coli.fasta | tail -n +2
+find ../Data/fasta -name '*.fasta' | xargs wc -l
 
-#3 cat E.coli.fasta | tail -n +2 | tr -d '\r\n' | wc -m
 
-#4 grep -o "ATGC" E.coli.fasta | wc -l
 
-#5 echo $(grep -o ["A","T"] E.coli.fasta | wc -l)/$(grep -o ["G","C"] E.coli.fasta | wc -l) | bc -l
+#2 print give file but not the first line,  use -n+NUM to output starting with line NUM
+
+cat ../Data/fasta/E.coli.fasta | tail -n +2
+
+
+#3 get rid of the first line of the file and delete all non-sequence characters and then do character count and print it
+
+cat ../Data/fasta/E.coli.fasta | tail -n +2 | tr -d '\r\n' | wc -m
+
+
+#4 find all given pattern in given file and out put only the result by line, then count the line fo the result
+
+grep -o "ATGC" ../Data/fasta/E.coli.fasta | wc -l
+
+
+#5 similar to the 4, get the count of given letters and coverted to variables, and use "echo bc" to do the calculation, adding -l to keep the decimal. 
+
+echo $(grep -o ["A","T"] ../Data/fasta/E.coli.fasta | wc -l)/$(grep -o ["G","C"] ../Data/fasta/E.coli.fasta | wc -l) | bc -l

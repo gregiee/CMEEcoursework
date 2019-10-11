@@ -1,10 +1,10 @@
 #!/bin/bash
-# Author: yy5819@ic.ac.uk
+# Author: YY5819@ic.ac.uk
 # Script: tabtocsv.sh
-# Desc: substitute the tabs in the files with commas
+# Description: substitute the tabs in the files with commas
 #
-saves the output into a .csv file
-# Arguments: 1-> tab delimited file
+# Saves the output into a .csv file
+# Arguments: 1 -> tab delimited file
 # Date: Oct 2019
 
 echo "Creating a comma delimited version of $1 ..."

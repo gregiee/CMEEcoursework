@@ -1,3 +1,8 @@
+#!/usr/bin/env python3
+
+__author__ = 'Yuchen YANG (YY5819@ic.ac.uk)'
+__version__ = '0.0.1'
+
 # Two example sequences to match
 # seq2 = "ATCGCCGGATTACGGG"
 # seq1 = "CAATTCGGAT"
@@ -63,7 +68,7 @@ my_best_score = -1
 for i in range(l1): # Note that you just take the last alignment with the highest score
     z = calculate_score(s1, s2, l1, l2, i)
     if z > my_best_score:
-        my_best_align = "." * i + s2 # think about what this is doing!
+        my_best_align = "." * i + s2 # adding the format for seq matching
         my_best_score = z 
 print(my_best_align)
 print(s1)
@@ -74,7 +79,7 @@ print("Best score:", my_best_score)
 # f.close() 
 
 
-
-with open('../Data/best_align_result.txt','w') as out:
+# write the result to result folder
+with open('../Results/best_align_result.txt','w') as out:
     out.write('{}\n{}\nbest score: {}\n'.format(my_best_align,s1,my_best_score))
 

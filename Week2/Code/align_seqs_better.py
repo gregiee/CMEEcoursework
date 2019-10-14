@@ -1,11 +1,41 @@
-import ipdb
-import pickle
-# Two example sequences to match
-seq2 = "ATCGCCGGATTACGGG"
-seq1 = "CG"
+#!/usr/bin/env python
+"""match two sequences and ouput all best results"""
 
-# Assign the longer sequence s1, and the shorter to s2
-# l1 is length of the longest, l2 that of the shortest
+__author__ = 'Yuchen Yang (yy5819@imperial.ac.uk)'
+__version__ = '1.0.0'
+
+import sys
+import pickle
+import os
+import ipdb
+
+# actual input files
+# find the inputfile name and read the sequences
+if len(sys.argv) > 1:
+    File1_direction = r'../Data/' + sys.argv[1]
+    File2_direction = r'../Data/' + sys.argv[2]
+else:  # using seq1.csv and seq2.csv as default input
+    File1_direction = r'../Data/407228326.fasta'
+    File2_direction = r'../Data/407228412.fasta'
+
+# re-used the function to deal with fasta file
+def openFasta(x):
+    with open(x,'r') as f:
+        fasta = ""
+        counter = 0
+        for row in f:
+            if counter != 0:
+                fasta += row.replace("\n","")
+            counter += 1
+    # print(fasta)
+    return fasta
+
+seq1 = openFasta(File1_direction)
+seq2 = openFasta(File2_direction)
+
+# # test seqs
+# seq1 = "AC"
+# seq2 = "TGACCGACGGACACAGGAC"
 
 l1 = len(seq1)
 l2 = len(seq2)
@@ -30,12 +60,12 @@ def calculate_score(s1, s2, l1, l2, startpoint):
             else:
                 matched = matched + "-"
 
-    # some formatted output
-    print("." * startpoint + matched)           
-    print("." * startpoint + s2)
-    print(s1)
-    print(score) 
-    print(" ")
+    # # some formatted output
+    # print("." * startpoint + matched)           
+    # print("." * startpoint + s2)
+    # print(s1)
+    # print(score) 
+    # print(" ")
 
     return score
 
@@ -47,21 +77,35 @@ def calculate_score(s1, s2, l1, l2, startpoint):
 # now try to find the best match (highest score) for the two sequences
 my_best_align = None
 my_best_score = -1
-best_results={}
+best_results=[]
+#if want to use pickle uncomment the best_Result as dict
+# best_result={}
 
-for i in range(l1): # Note that you just take the last alignment with the highest score
+# running through to get the highest score
+for i in range(l1): 
     z = calculate_score(s1, s2, l1, l2, i)
     if z >= my_best_score:
-        my_best_align = "." * i + s2 # think about what this is doing!
         my_best_score = z 
 
-for i in range(l1):
-    z = calculate_score(s1, s2, l1, l2, i)
-    if z == my_best_score:
-        best_results[i] = (my_best_align,s1,my_best_score)
+# write all hightest score to a file
+with open('../Results/all_best_align_results.txt','w') as f:
+    for i in range(l1):
+        z = calculate_score(s1, s2, l1, l2, i)
+        if z == my_best_score:
+            my_best_align = "." * i + s2 # adding the format for seq matching
+            best_results.append((my_best_align,s1,my_best_score))
+            print("writing to result txt files",my_best_align,s1,my_best_score)
+            f.write('\n\nbest result:\n{}\n{}\nscore: {}\n'.format(my_best_align,s1,my_best_score))
+    f.close()
 
 
-f = open('../Data/all_best_align_results.p','wb') ## note the b: accept binary files
-pickle.dump(best_results, f)
-f.close()
+# # comment out the populate pickle script
+# f = open('../Results/all_best_align_results.p','wb') ## note the b: accept binary files
+# pickle.dump(best_results, f)
+# f.close()
 
+# # comment out the load pick to dict test
+# t = open('../Results/all_best_align_results.p','rb')
+# test_load_dict = pickle.load(t)
+# print(test_load_dict)
+# t.close()

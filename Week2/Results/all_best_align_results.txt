@@ -1,0 +1,30 @@
+
+
+best result:
+..AC
+TGACCGACGGACACAGGAC
+score: 2
+
+
+best result:
+......AC
+TGACCGACGGACACAGGAC
+score: 2
+
+
+best result:
+..........AC
+TGACCGACGGACACAGGAC
+score: 2
+
+
+best result:
+............AC
+TGACCGACGGACACAGGAC
+score: 2
+
+
+best result:
+.................AC
+TGACCGACGGACACAGGAC
+score: 2

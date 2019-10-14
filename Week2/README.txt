@@ -1,1 +1,0 @@
-Make sure there is a readme file in every week’s directory. This file should give an overview of the weekly directory contents, listing all the scripts and what they do. This is different from the readme for your overall git repository, of which Week 1 is a part. You will write a similar readme for each subsequent weekly submission

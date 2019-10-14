@@ -1,8 +1,6 @@
 #!/usr/bin/env python3
 
-"""Some functions exemplifying the use of control statements"""
-
-__author__ = 'Your Name (Your.Name@your.email.address)'
+__author__ = 'Yuchen YANG (YY5819@ic.ac.uk)'
 __version__ = '0.0.1'
 
 import csv
@@ -38,7 +36,8 @@ def is_an_oak(name):
     #print(name.lower().startswith('quercs'))
     #ipdb.set_trace()
     #the function works with "genus", found the typo in 'quercs'
-    # return name.lower().startswith('quercus')
+    # # return name.lower().startswith('quercs')
+    # adding regex to take fuzz input
     if re.match(r"^quer?cuss?$", name, flags=re.I) != None:
         return True
     else:
@@ -47,12 +46,13 @@ def is_an_oak(name):
 def main(argv): 
     f = open('../Data/TestOaksData.csv','r')
     g = open('../Data/JustOaksData.csv','w')
-    next(f)
+    next(f) #skip the header
     taxa = csv.reader(f)
-    fieldnames = ['Genus', 'Species']
+    #set headers for new file
+    fieldnames = ['Genus', 'Species'] 
     csvwrite = csv.DictWriter(g,fieldnames=fieldnames)
-    oaks = set()
     csvwrite.writeheader()
+    oaks = set()
     for row in taxa:
         print(row)
         print ("The genus is: ") 
@@ -66,4 +66,5 @@ def main(argv):
 if (__name__ == "__main__"):
     status = main(sys.argv)
 
-doctest.testmod()
+#uncomment for test
+# doctest.testmod()

@@ -1,3 +1,8 @@
+#!/usr/bin/env python3
+
+__author__ = 'Yuchen YANG (YY5819@ic.ac.uk)'
+__version__ = '0.0.1'
+
 # Average UK Rainfall (mm) for 1910 by month
 # http://www.metoffice.gov.uk/climate/uk/datasets
 rainfall = (('JAN',111.4),
@@ -17,27 +22,27 @@ rainfall = (('JAN',111.4),
 # (1) Use a list comprehension to create a list of month,rainfall tuples where
 # the amount of rain was greater than 100 mm.
  
-# (2) Use a list comprehension to create a list of just month names where the
-# amount of rain was less than 50 mm. 
-
-# (3) Now do (1) and (2) using conventional loops (you can choose to do 
-# this before 1 and 2 !). 
-
 greaterThan100 = [monthAndRainfall for monthAndRainfall in rainfall if monthAndRainfall[1] > 100]
 print(greaterThan100)
+
+# (2) Use a list comprehension to create a list of just month names where the
+# amount of rain was less than 50 mm. 
 
 monthNamesLessThan50 = [monthAndRainfall[0] for monthAndRainfall in rainfall if monthAndRainfall[1] < 50]
 print(monthNamesLessThan50)
 
-greaterThan100 = []
+# (3) Now do (1) and (2) using conventional loops (you can choose to do 
+# this before 1 and 2 !). 
+
+greaterThan100_loop = []
 for monthAndRainfall in rainfall:
       if monthAndRainfall[1] > 100:
-            greaterThan100.append(monthAndRainfall)
-print(greaterThan100)
+            greaterThan100_loop.append(monthAndRainfall)
+print(greaterThan100_loop)
 
-monthNamesLessThan50 = []
+monthNamesLessThan50_loop = []
 for monthAndRainfall in rainfall:
       if monthAndRainfall[1] <50:
-            monthNamesLessThan50.append(monthAndRainfall[0])
-print(monthNamesLessThan50)
+            monthNamesLessThan50_loop.append(monthAndRainfall[0])
+print(monthNamesLessThan50_loop)
 

@@ -1,3 +1,8 @@
+#!/usr/bin/env python3
+
+__author__ = 'Yuchen YANG (YY5819@ic.ac.uk)'
+__version__ = '0.0.1'
+
 birds = ( ('Passerculus sandwichensis','Savannah sparrow',18.7),
           ('Delichon urbica','House martin',19),
           ('Junco phaeonotus','Yellow-eyed junco',19.5),
@@ -8,11 +13,6 @@ birds = ( ('Passerculus sandwichensis','Savannah sparrow',18.7),
 #(1) Write three separate list comprehensions that create three different
 # lists containing the latin names, common names and mean body masses for
 # each species in birds, respectively. 
-
-# (2) Now do the same using conventional loops (you can choose to do this 
-# before 1 !). 
-
-
 
 latinNames_lc = [bird[0] for bird in birds]
 print('latin names: ') 
@@ -27,7 +27,12 @@ print('body masses: ')
 print(bodyMasses_lc)
 
 
-latinNames_loop, commonNames_loop, bodyMasses_loop =  ([] for i in range(3))
+# (2) Now do the same using conventional loops (you can choose to do this 
+# before 1 !). 
+
+
+# define and create three lists in one go
+latinNames_loop, commonNames_loop, bodyMasses_loop =  ([] for i in range(3)) 
 for bird in birds:
     latinNames_loop.append(bird[0])
     commonNames_loop.append(bird[1])

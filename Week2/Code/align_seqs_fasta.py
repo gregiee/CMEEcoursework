@@ -1,12 +1,17 @@
+#!/usr/bin/env python3
+
+__author__ = 'Yuchen YANG (YY5819@ic.ac.uk)'
+__version__ = '0.0.1'
+
 # Two example sequences to match
+# first attempt to modulise the code
 # seq2 = "ATCGCCGGATTACGGG"
 # seq1 = "CAATTCGGAT"
 import sys
 import ipdb
 
-# Assign the longer sequence s1, and the shorter to s2
-# l1 is length of the longest, l2 that of the shortest
 
+# create a function to open fasta file and return clean data
 def openFasta(x):
     with open(x,'r') as f:
         fasta = ""
@@ -18,7 +23,8 @@ def openFasta(x):
     print(fasta)
     return fasta
 
-
+# Assign the longer sequence s1, and the shorter to s2
+# l1 is length of the longest, l2 that of the shortest
 def set(f1, f2):
     l1 = len(f1)
     l2 = len(f2)

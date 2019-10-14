@@ -90,7 +90,7 @@ there are 4 directories.
     ##take explict inputs or use default fasta files and match their squences, output all best results in results folder:
     python align_seqs_better.py ../Data/407228326.fasta ../Data/407228412.fasta
     ```
-oaks_debugme.py
+ - oaks_debugme.py
     ```python
-    ## found and fixed the typo bug, added unit test to make sure the function work as expected, add regex rules to take ambiguous inputs, add codes to deal with csv header for file read and write. 
+    ## found and fixed the typo bug, added unit test to make sure the function work as expected, add regex rules to take               ambiguous inputs, add codes to deal with csv header for file read and write. 
     ```

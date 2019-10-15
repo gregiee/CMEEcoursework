@@ -82,19 +82,25 @@ there are 4 directories.
     ``` 
 - align_seqs.py
     ```python
-    ## takes the DNA sequences as an input from a single external file and saves the best alignment along with its corresponding score in a single text file (your choice of format and file type) to an appropriate location. 
+    ## takes the DNA sequences as an input from a single external file 
+    ## and saves the best alignment along with its corresponding score 
+    ## in a single text file (your choice of format and file type) to an appropriate location. 
     ```
 - align_seqs_fasta.py
     ```bash
-    ##take explict inputs or use default fasta files and match their squences, output one best result:
+    ##take explict inputs or use default fasta files and match their squences, 
+    ## output one best result:
     python align_seqs_better.py ../Data/407228326.fasta ../Data/407228412.fasta
     ```
 - align_seqs_better.py
     ```bash
-    ##take explict inputs or use default fasta files and match their squences, output all best results in results folder:
+    ##take explict inputs or use default fasta files and match their squences, 
+    ## output all best results in results folder:
     python align_seqs_better.py ../Data/407228326.fasta ../Data/407228412.fasta
     ```
  - oaks_debugme.py
     ```python
-    ## found and fixed the typo bug, added unit test to make sure the function work as expected, add regex rules to take               ambiguous inputs, add codes to deal with csv header for file read and write. 
+    ## found and fixed the typo bug, added unit test to make sure the function
+    ## work as expected, add regex rules to take ambiguous inputs, add codes 
+    ## to deal with csv header for file read and write. 
     ```

@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+"""take explict inputs or use default fasta files and match their squences, output one best result:"""
 
 __author__ = 'Yuchen YANG (YY5819@ic.ac.uk)'
 __version__ = '0.0.1'
@@ -13,6 +14,7 @@ import ipdb
 
 # create a function to open fasta file and return clean data
 def openFasta(x):
+    """open fasta file and return clean fasta data"""
     with open(x,'r') as f:
         fasta = ""
         counter = 0
@@ -26,6 +28,8 @@ def openFasta(x):
 # Assign the longer sequence s1, and the shorter to s2
 # l1 is length of the longest, l2 that of the shortest
 def set(f1, f2):
+    """ Assign the longer sequence s1, and the shorter to s2
+        l1 is length of the longest, l2 that of the shortest"""
     l1 = len(f1)
     l2 = len(f2)
     if l1 >= l2:
@@ -40,6 +44,7 @@ def set(f1, f2):
 # A function that computes a score by returning the number of matches starting
 # from arbitrary startpoint (chosen by user)
 def calculate_score(s1, s2, l1, l2, startpoint):
+    """calculating matching scores"""
     matched = "" # to hold string displaying alignements
     score = 0
     for i in range(l2):
@@ -66,6 +71,7 @@ def calculate_score(s1, s2, l1, l2, startpoint):
 
 # now try to find the best match (highest score) for the two sequences'
 def best(s1, s2):
+    """find best match and algnment and scores for two fasta"""
     s1, s2, l1, l2 = set(s1, s2)
     my_best_align = None
     my_best_score = -1
@@ -85,6 +91,7 @@ def best(s1, s2):
 # f.close() 
 
 def main(argv):
+    """main control and write file"""
     if len(argv) >= 3:
         fasta1 = openFasta(argv[1])
         fasta2 = openFasta(argv[2])

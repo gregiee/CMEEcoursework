@@ -20,6 +20,7 @@ else:  # using seq1.csv and seq2.csv as default input
 
 # re-used the function to deal with fasta file
 def openFasta(x):
+    """open fasta file and return cleaned string"""
     with open(x,'r') as f:
         fasta = ""
         counter = 0
@@ -47,9 +48,8 @@ else:
     s2 = seq1
     l1, l2 = l2, l1 # swap the two lengths
 
-# A function that computes a score by returning the number of matches starting
-# from arbitrary startpoint (chosen by user)
 def calculate_score(s1, s2, l1, l2, startpoint):
+    """A function that computes a score by returning the number of matches starting from arbitrary startpoint"""
     matched = "" # to hold string displaying alignements
     score = 0
     for i in range(l2):

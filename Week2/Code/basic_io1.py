@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+"""open and print the test.txt in sandbox in two different ways"""
 
 __author__ = 'Yuchen YANG (YY5819@ic.ac.uk)'
 __version__ = '0.0.1'

@@ -1,4 +1,7 @@
 #!/usr/bin/env python3
+"""takes the DNA sequences as an input from a single external file 
+and saves the best alignment along with its corresponding score 
+in a single text file (your choice of format and file type) to an appropriate location. """
 
 __author__ = 'Yuchen YANG (YY5819@ic.ac.uk)'
 __version__ = '0.0.1'
@@ -37,6 +40,7 @@ else:
 # A function that computes a score by returning the number of matches starting
 # from arbitrary startpoint (chosen by user)
 def calculate_score(s1, s2, l1, l2, startpoint):
+    """A function that computes a score by returning the number of matches starting from arbitrary startpoint (chosen by user)"""
     matched = "" # to hold string displaying alignements
     score = 0
     for i in range(l2):

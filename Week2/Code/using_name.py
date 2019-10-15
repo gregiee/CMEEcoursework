@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+"""understanding how main and name works"""  
 # Filename: using_name.py
 
 __author__ = 'Yuchen YANG (YY5819@ic.ac.uk)'

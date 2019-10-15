@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 
-"""Description of this program or application.
-    You can use several lines"""
+"""example python script"""
 
 __appname__ = 'boilerplate'
 __author__ = 'Yuchen YANG (YY5819@ic.ac.uk)'

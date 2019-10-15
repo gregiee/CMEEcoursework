@@ -1,19 +1,8 @@
 (dp0
-I2
-(S'............CG'
+S'another key'
 p1
-S'ATCGCCGGATTACGGG'
+I11
+sS'a key'
 p2
-I2
-tp3
-sI12
-(g1
-g2
-I2
-tp4
-sI5
-(g1
-g2
-I2
-tp5
+I10
 s.

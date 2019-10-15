@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+"""manipulate CSV files and create new csv files based on given files"""
 
 __author__ = 'Yuchen YANG (YY5819@ic.ac.uk)'
 __version__ = '0.0.1'

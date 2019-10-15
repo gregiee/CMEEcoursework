@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+"""Practical for list comprehensions and loops"""
 
 __author__ = 'Yuchen YANG (YY5819@ic.ac.uk)'
 __version__ = '0.0.1'
@@ -21,6 +22,7 @@ taxa = [ ('Myotis lucifugus','Chiroptera'),
 
 # create a function that takes a given input and populate the dictionary
 def Convert(t, d): 
+    """convert input into dic"""
     for t, n in t: 
         d.setdefault(n, []).append(t) 
     return d 

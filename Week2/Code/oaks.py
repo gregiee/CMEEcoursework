@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-
+"""finding oaks in lists of data using for loop and comprehensions."""
 __author__ = 'Yuchen YANG (YY5819@ic.ac.uk)'
 __version__ = '0.0.1'
 
@@ -13,6 +13,7 @@ taxa = [ 'Quercus robur',
        ]
 
 def is_an_oak(name):
+    """check if the given string is an oak"""
     return name.lower().startswith('quercus ')
 
 ##Using for loops

@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+"""dump dict into pickle file and load pickle file into dict"""
 
 __author__ = 'Yuchen YANG (YY5819@ic.ac.uk)'
 __version__ = '0.0.1'

@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
+'''conditions and loops examples'''
 
 __author__ = 'Yuchen YANG (YY5819@ic.ac.uk)'
 __version__ = '0.0.1'
 
 import sys
 
- for j in range(x):
+for j in range(12):
     if j % 3 == 0:
         print('hello')
 

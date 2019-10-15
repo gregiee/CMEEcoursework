@@ -61,6 +61,10 @@ there are 4 directories.
     ```python
     ##control flow tools such as if else
     ```
+- loops.py
+    ```python
+    ##example for loops
+    ```
 - lc1.py
 - lc2.py
 - dictionary.py

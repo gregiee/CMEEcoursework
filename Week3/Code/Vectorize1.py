@@ -8,14 +8,14 @@ __version__ = '0.0.1'
 import numpy as np
 import time
 
-# create 1000*1000 random number
+# create 1000*1000 random number array
 M = np.random.rand(1000,1000)
 
 def SumAllElements_loop(M):
     """using loop to sum all numbers up"""
     Tot = 0
-    for i in range(M.shape[0]):
-        for j in range(M.shape[1]):
+    for i in range(M.shape[0]): #use .shape[0] to access a (n,m)matrix's n value
+        for j in range(M.shape[1]): #use .shaoe[1] to access m 
             Tot += M[i][j]
     return Tot
 

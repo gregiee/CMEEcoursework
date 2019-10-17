@@ -11,15 +11,16 @@ import time
 # create function using nested loops
 def stochrick(p0=np.random.uniform(size=1000,low=.5,high=1.5),r=1.2,K=1,sigma=0.2,numyears=100):
     N=np.zeros((numyears, len(p0)))
-    N[1,:]=p0
-    for pop in range(0, len(p0)):
+    N[0]=p0 #what is the difference between N[0] and N[0,]?
+    for pop in range(len(p0)):
         for yr in range(1, numyears):
             N[yr,pop]=N[yr-1,pop]*np.exp(r*(1-N[yr-1,pop]/K)+np.random.normal(0,sigma,1))
     return N
 
+# create function using vec method
 def stochrickvect(p0=np.random.uniform(size=1000,low=.5,high=1.5),r=1.2,K=1,sigma=0.2,numyears=100):
     N=np.zeros((numyears, len(p0)))
-    N[1,:]=p0
+    N[0]=p0
     for yr in range(1, numyears):
         N[yr,]=N[yr-1,]*np.exp(r*(1-N[yr-1,]/K)+np.random.normal(0,sigma,1))
     return N

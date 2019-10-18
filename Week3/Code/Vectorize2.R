@@ -10,7 +10,6 @@ rm(list=ls())
 stochrick<-function(p0=runif(1000,.5,1.5),r=1.2,K=1,sigma=0.2,numyears=100) { 
   N<-matrix(NA,numyears,length(p0))
   N[1,]<-p0
-
   for (pop in 1:length(p0))
   {
     for (yr in 2:numyears)
@@ -20,7 +19,6 @@ stochrick<-function(p0=runif(1000,.5,1.5),r=1.2,K=1,sigma=0.2,numyears=100) {
   }
   return(N)
 }
-
 
 
 stochrickvect <- function(p0=runif(1000,.5,1.5),r=1.2,K=1,sigma=0.2,numyears=100) { # Generates 1000 random values between 0.5 and 1.5 for p0 

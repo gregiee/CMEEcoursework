@@ -7,6 +7,7 @@ __version__ = '0.0.1'
 _a_global = 10
 
 def a_function():
+    """create two local vars"""
     _a_global = 5
     _a_local = 4
     print("Inside the function, the value is ", _a_global)
@@ -23,6 +24,7 @@ print("Outside the function, the value is ", _a_global)
 _a_global = 10
 
 def a_function():
+    """assign different value to a global var and create a local one"""
     global _a_global
     _a_global = 5
     _a_local = 4
@@ -41,6 +43,7 @@ if _a_global >= 5:
     _b_global = _a_global + 5
 
 def a_function():
+    """create three local vars"""
     _a_global = 5
     
     if _a_global >= 5:
@@ -64,6 +67,7 @@ print("outside the function, the value of _b_global is ", _b_global)
 _a_global = 10
 
 def a_function():
+    """create a local vars"""
     _a_local = 4
 
     print("inside the function, the value of _a_local is ", _a_local)
@@ -82,6 +86,7 @@ _a_global = 10
 print("outside the function, the value of _a_global is ", _a_global)
 
 def a_function():
+    """create a local and a global vars"""
     global _a_global
     _a_global = 5
     _a_local = 4
@@ -97,9 +102,11 @@ print("outside the function, the value of _a_global now is ", _a_global)
 
 # fourth chunck of newer version shown at class
 def a_function():
+    """create a local var"""
     _a_global = 10
 
     def _a_function2():
+        """create a global var and assign value"""
         global _a_global
         _a_global = 20
     

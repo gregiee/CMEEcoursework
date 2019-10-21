@@ -1,5 +1,5 @@
-# Week2
-covers `Python` basics
+# Week3
+covers `R` basics
 
 ## Author
 Yuchen Yang (yy5819@imperial.ac.uk)
@@ -14,93 +14,126 @@ there are 4 directories.
 - **Sandbox** 
 
 ### detailed script describution
-- basic_io1.py
-    ```python
-    ##open and print the test.txt in sandbox in two different ways
+- basic_io.R
+    ```R
+    ##R input-output
     ```
-- basic_io2.py
-    ```python
-    ##adding content to the end of testout.txt 
+- control_flow.R
+    ```R
+    ##control flow in R 
     ```
-- basic_io3.py
-    ```python
-    ##dump dict into pickle file and load pickle file into dict 
+- break.R
+    ```R
+    ##break in R
     ```
-- basic_csv.py
-    ```python
-    ## manipulate CSV files and create new csv files based on given files
+- next.R
+    ```R
+    ##next in R
     ```
-- cfexercises1.py
-- cfexercises2.py  
-    ```python
-    ##conditions and loops examples
-    ##cfexercises1 modified as practicle requesteds
+- boilerplate.R
+    ```R
+    ##example R script
     ```
-- oaks.py
-    ```python
-    ##finding oaks in lists of data using for loop and comprehensions.
+- TreeHeight.R
+    ```R
+    ##calculate tree height
     ```
-- scope.py
-    ```python
-    ##examples on variable scope
+- preallocate.R
+    ```R
+    ##"pre-allocate" a vector 
     ```
-- boilerplate.py
-    ```python
-    ##the very basic of python programme:
-    ##the shebang, docstring, internal variables, functions and modules...
+- apply1.R
+- apply2.R
+    ```R
+    ##a family of functions called *apply in R that vectorize your code
     ```
-- using_name.py
-    ```python
-    ##understanding how main and name works
+- sample.R
+    ```R
+    ##A vectorization example - sampling population
     ```
-- sysargv.py
-    ```python
-    ##to understand sys.argv
+- Ricker.R
+    ```R
+    ##The Ricker model
     ```
-- control_flow.py
-    ```python
-    ##control flow tools such as if else
+- Vectorize1.R
+    ```R
+    ##non vectorized function and vectorized function
     ```
-- loops.py
+- Vectorize1.py
     ```python
-    ##example for loops
+    ##python version
     ```
-- lc1.py
-- lc2.py
-- dictionary.py
-- tuple.py
-    ```python
-    ##practicles on list comprehensions and for loops
+- Vectorize2.R
+    ```R
+    ##non vectorized stochrick and vectorized stochrick
     ```
-- test_control_flow.py
+- Vectorize2.py
     ```python
-    ##introducing unit testing with doctet
+    ##python version
     ```
-- debugme.py
-    ```python
-    ##example script to debug
-    ``` 
-- align_seqs.py
-    ```python
-    ## takes the DNA sequences as an input from a single external file 
-    ## and saves the best alignment along with its corresponding score 
-    ## in a single text file (your choice of format and file type) to an appropriate location. 
-    ```
-- align_seqs_fasta.py
+- Vectorize.sh
     ```bash
-    ##take explict inputs or use default fasta files and match their squences, 
-    ## output one best result:
-    python align_seqs_better.py ../Data/407228326.fasta ../Data/407228412.fasta
+    ##bash script that'll run all vectorize* script and compare running time
     ```
-- align_seqs_better.py
-    ```bash
-    ##take explict inputs or use default fasta files and match their squences, 
-    ## output all best results in results folder:
-    python align_seqs_better.py ../Data/407228326.fasta ../Data/407228412.fasta
+- try.R
+    ```R
+    ##run a simulation that involves sampling from a population with try
     ```
- - oaks_debugme.py
+- browse.R
+    ```R
+    ##an example using browser()
+    ```
+- TAutoCorr.R
+    ```R
+    ## weather practical
+    ```
+- TAutoCorr.tex
+    ```
+    source file to create pdf from Latex
+    ```
+- get_TreeHeight.R
+    ```R
+    ##more generalised version that'll take other data input
+    ```
+- get_TreeHeight.py
     ```python
-    ## found and fixed the typo bug, added unit test to make sure the function
-    ## work as expected, add regex rules to take ambiguous inputs, add codes 
-    ## to deal with csv header for file read and write. 
+    ##python version
     ```
+- run_get_TreeHeight.sh
+    ```bash
+    ##bash script get_TreeHeight.R and get_TreeHeight.py
+    ```
+- DataWrang.R
+    ```R
+    ##record of what you are doing to the data using a R script file
+    ```
+- DataWrangTidy.R
+    ```R
+    ##uses dplyr and tidyr for the same data wrangling steps.
+    ```
+- PP_Lattice.R
+    ```R
+    ##a script that draws and saves three lattice graphs by feeding interaction type
+    ```
+- Girko.R
+    ```R
+    ##commands for plotting the Girko's law simulation and save plot as pdf
+    ```
+- MyBar.R
+    ```R
+    ##commands for annotating a plot and save pdf
+    ```
+- PlotLin.R
+    ```R
+    ##mathematical annotation for a axis, and in the plot area
+    ```
+- PP_Regress.R
+- PP_Regress_loc.R
+    ```R
+    ##draw regression graphs and save reuslts, using different grouping 
+    ```
+- Mapping.R
+    ```R
+    ##map GPDD in R using map
+    ```
+

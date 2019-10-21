@@ -1,12 +1,4 @@
-# Author: Yuchen Yang (yy5819@ic.ac.uk)
-# Version: 0.0.1
-## Clear the directory ##
-
-rm(list=ls())
-
-###############
 #!/usr/bin/env python3
-
 """input distance and angle to calculates heights of trees"""
 
 __author__ = 'Yuchen Yang (yy5819@ic.ac.uk)'
@@ -37,6 +29,7 @@ def writeFile(data, path):
     filename = file[0] + r'_treeheights.csv'
     path = '../Results/' + filename
     data.to_csv(path, index=False)
+    print("Done!")
 
 
 def main(argv):

@@ -1,3 +1,10 @@
+# Author: Yuchen Yang (yy5819@ic.ac.uk)
+# Version: 0.0.1
+## Clear the directory ##
+
+rm(list=ls())
+
+###############
 #!/usr/bin/env python3
 
 """input distance and angle to calculates heights of trees"""
@@ -33,6 +40,7 @@ def writeFile(data, path):
 
 
 def main(argv):
+    """main function that runs the script"""
     data = loadFile(sys.argv[1])
     output = TreeHeight(data)
     writeFile(output, sys.argv[1])

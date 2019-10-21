@@ -1,4 +1,4 @@
-# Author: YUchen Yang (yy5819@ic.ac.uk)
+# Author: Yuchen Yang (yy5819@ic.ac.uk)
 # Version: 0.0.1
 ## Clear the directory ##
 

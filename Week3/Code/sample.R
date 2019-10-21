@@ -1,3 +1,10 @@
+# Author: Yuchen Yang (yy5819@ic.ac.uk)
+# Version: 0.0.1
+## Clear the directory ##
+
+rm(list=ls())
+
+###############
 ######### Functions ##########
 
 ## A function to take a sample of size n from a population "popn" and return its mean

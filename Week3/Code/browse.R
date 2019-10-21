@@ -1,3 +1,10 @@
+# Author: Yuchen Yang (yy5819@ic.ac.uk)
+# Version: 0.0.1
+## Clear the directory ##
+
+rm(list=ls())
+
+###############
 Exponential <- function(N0 = 1, r = 1, generations = 10){
   # Runs a simulation of exponential growth
   # Returns a vector of length generations

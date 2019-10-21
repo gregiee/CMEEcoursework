@@ -1,3 +1,10 @@
+# Author: Yuchen Yang (yy5819@ic.ac.uk)
+# Version: 0.0.1
+## Clear the directory ##
+
+rm(list=ls())
+
+###############
 # A simple script to illustrate R input-output.  
 # Run line by line and check inputs outputs to understand what is happening  
 

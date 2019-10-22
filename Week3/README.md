@@ -87,7 +87,7 @@ there are 4 directories.
     ```R
     ## weather practical
     ```
-- TAutoCorr.tex
+- autocorrelation.tex~~TAutoCorr.tex~~
     ```
     source file to create pdf from Latex
     ```

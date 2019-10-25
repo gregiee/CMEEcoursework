@@ -132,7 +132,7 @@ there are 4 directories.
     ```R
     ##draw regression graphs and save reuslts, using different grouping 
     ```
-- Mapping.R
+- GPDD_Data.R~~Mapping.R~~
     ```R
     ##map GPDD in R using map
     ```

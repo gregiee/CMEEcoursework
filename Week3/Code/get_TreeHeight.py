@@ -9,9 +9,9 @@ import pandas as pd
 import numpy as np
 import re
 
-def loadFile(path):
+def loadFile(filepath):
     """Read and load file, return data"""
-    data = pd.read_csv(path)
+    data = pd.read_csv(filepath)
     return data
 
 def TreeHeight(data):
@@ -23,9 +23,9 @@ def TreeHeight(data):
     data['height'] = height
     return data
 
-def writeFile(data, path):
+def writeFile(data, filepath):
     """write file to Result folder with a name InputFileName_treeheights.csv"""
-    file = re.findall(r"/+([\w\d]+).csv", sys.argv[1])
+    file = re.findall(r"/+([\w\d]+).csv", filepath)
     filename = file[0] + r'_treeheights.csv'
     path = '../Results/' + filename
     data.to_csv(path, index=False)

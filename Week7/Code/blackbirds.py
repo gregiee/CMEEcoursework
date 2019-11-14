@@ -25,8 +25,9 @@ text = text.decode('ascii', 'ignore') # Now decode back to string
 # Now extend this script so that it captures the Kingdom, Phylum and Species
 # name for each species and prints it out to screen neatly.
 
-# print(text)
-my_reg = r'(Kingdom)\s+([a-zA-Z]+)\s+.+?(Phylum)\s+([a-zA-Z]+)\s+.+?(Species)\s+([a-zA-Z]+\s[a-zA-Z]+)' 
+print(text)
+# 6 groups
+my_reg = r'(Kingdom)\s+([a-zA-Z]+).+?(Phylum)\s+([a-zA-Z]+).+?(Species)\s+([a-zA-Z]+\s[a-zA-Z]+)'
 Species = re.findall(my_reg, text)
 
 # ipdb.set_trace()

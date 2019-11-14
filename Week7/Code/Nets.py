@@ -32,7 +32,7 @@ for i in range(count):
             #[(id, id, weight)]
             linklist.append((i,j))
             #width for edges, with very basic scaling
-            weights.append(links[i][j]/7)
+            weights.append(links[i][j])
 
 for i in nodes.Type:
     if i == 'University':
@@ -43,12 +43,12 @@ for i in nodes.Type:
         color.append('r')
         
 # normalise weight list       
-normed_weights = [i/sum(weights) for i in weights]
+normed_weights = [1 + i/10 for i in weights]
 
 # add layout basiced on item index
 pos = nx.random_layout(nodes.index.values) 
 
-G = nx.Graph()
+G = nx.DiGraph()
 # add data to graph object
 G.add_nodes_from(nodes.index.values)
 G.add_edges_from(linklist)
@@ -57,8 +57,8 @@ G.add_edges_from(linklist)
 plot = p.figure()
 p.axis('off')
 # draw the graph
-nx.draw_networkx(G, pos, node_color = color, node_size=500, with_labels=False)
-nx.draw_networkx_edges(G, pos, width = weights)
+nx.draw_networkx(G, pos, node_color = color, node_size=2000, with_labels=False)
+nx.draw_networkx_edges(G, pos, width = normed_weights)
 # add lable from nodes
 nx.draw_networkx_labels(G, pos, nodes["id"])
 

@@ -58,7 +58,7 @@ plot = p.figure()
 p.axis('off')
 # draw the graph
 nx.draw_networkx(G, pos, node_color = color, node_size=2000, with_labels=False)
-nx.draw_networkx_edges(G, pos, width = normed_weights)
+nx.draw_networkx_edges(G, pos, width = normed_weights, edge_color = 'grey')
 # add lable from nodes
 nx.draw_networkx_labels(G, pos, nodes["id"])
 

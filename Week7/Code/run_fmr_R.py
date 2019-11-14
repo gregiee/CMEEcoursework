@@ -21,10 +21,10 @@ stdout, stderr = p.communicate()
 
 # ipdb.set_trace()
 if stderr:
-	print("===============")
+    print("--------------")
     print("Raise error:")
     print(stderr.decode())
 else:
-	print("===============")
+    print("--------------")
     print("fmr.R is executed:")
     print(stdout.decode())

@@ -37,28 +37,34 @@ for i in range(count):
 for i in nodes.Type:
     if i == 'University':
         color.append('b')
-    if i == 'Hosting Partner':
+    elif i == 'Hosting Partner':
         color.append('g')
-    if i == 'Non-Hosting Partners':
+    else:
         color.append('r')
         
 # normalise weight list       
 normed_weights = [1 + i/10 for i in weights]
 
-# add layout basiced on item index
-pos = nx.random_layout(nodes.index.values) 
 
+
+# add layout basiced on item index
 G = nx.DiGraph()
+
+pos = nx.spring_layout(nodes.index.values) 
 # add data to graph object
 G.add_nodes_from(nodes.index.values)
 G.add_edges_from(linklist)
 
 # initialise plot
-plot = p.figure()
 p.axis('off')
 # draw the graph
-nx.draw_networkx(G, pos, node_color = color, node_size=2000, with_labels=False)
-nx.draw_networkx_edges(G, pos, width = normed_weights, edge_color = 'grey')
+nx.draw_networkx(G, pos, 
+    node_color = color, 
+    node_size = 2000, 
+    with_labels = False, 
+    width = normed_weights,
+    edge_color = 'grey')
+# nx.draw_networkx_edges(G, pos, width = normed_weights, edge_color = 'grey')
 # add lable from nodes
 nx.draw_networkx_labels(G, pos, nodes["id"])
 
@@ -67,6 +73,5 @@ blue = patches.Patch(color='b', label='University')
 green = patches.Patch(color='g', label='Hosting Partner')
 red = patches.Patch(color='r', label='Non-Hosting Partner')
 p.legend(handles=[blue, green, red])
-
-plot.savefig('../Results/Nets_py.svg')
-
+p.savefig('../Results/Nets_py.svg')
+p.close()

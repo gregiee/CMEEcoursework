@@ -13,7 +13,7 @@ there are 4 directories.
 - **Results** 
 - **Sandbox** 
 
-### detailed script describution
+### detailed script description
 - basic_io1.py
     ```python
     ##open and print the test.txt in sandbox in two different ways

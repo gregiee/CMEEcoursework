@@ -53,16 +53,16 @@ re.search(r'\d*\.?\d*','1432.75+60.22i').group()
 
 re.search(r'[AGTC]+', 'the sequence ATTCGT').group()
 
-re.search(r'\s+[A-Z]\w+\s*\w+', "The bird-shit frog's name is Theloderma asper.").group()4
+re.search(r'\s+[A-Z]\w+\s*\w+', "The bird-shit frog's name is Theloderma asper.").group()
 
 MyStr = 'Samraat Pawar, s.pawar@imperial.ac.uk, Systems biology and ecological theory'
 match = re.search(r"[\w\s]+,\s[\w\.@]+,\s[\w\s]+",MyStr)
 match.group()
 
 MyStr = 'Samraat Pawar, s-pawar@imperial.ac.uk, Systems biology and ecological theory'
-
-match = re.search(r"[\w\s]+,\s[\w\.@]+,\s[\w\s&]+",MyStr)
-match.group()
+# #error example, commented out:
+# match = re.search(r"[\w\s]+,\s[\w\.@]+,\s[\w\s&]+",MyStr)
+# match.group()
 
 match = re.search(r"[\w\s]+,\s[\w\.-]+@[\w\.-]+,\s[\w\s&]+",MyStr)
 match.group()

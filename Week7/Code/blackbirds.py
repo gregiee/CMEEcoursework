@@ -19,8 +19,9 @@ text = text.replace('\n',' ')
 # In particular, note that there are "strange characters" (these are accents and
 # non-ascii symbols) because we don't care for them, first transform to ASCII:
 
-text = text.encode('ascii', 'ignore') # first encode into ascii bytes
-text = text.decode('ascii', 'ignore') # Now decode back to string
+# these are not working for python2, commented out:
+# text = text.encode('ascii', 'ignore') # first encode into ascii bytes
+# text = text.decode('ascii', 'ignore') # Now decode back to string
 
 # Now extend this script so that it captures the Kingdom, Phylum and Species
 # name for each species and prints it out to screen neatly.

@@ -13,7 +13,7 @@ there are 4 directories.
 - **Results** 
 - **Sandbox** 
 
-### detailed script describution
+### detailed script description
 - basic_io.R
     ```R
     ##R input-output

@@ -7,11 +7,7 @@ Yuchen Yang (yy5819@imperial.ac.uk)
 ***
 
 ## structure
-there are 4 directories.
-- **Data**
-- **Code** 
-- **Results** 
-- **Sandbox** 
+there are no directories.
 
 ### detailed script description
 no working script

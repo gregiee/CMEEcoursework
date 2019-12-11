@@ -1,0 +1,3 @@
+mv: preserving times for ‘/rds/general/user/yy5819/home/test/YY5819_HPC_2019_main.R’: Stale file handle
+mv: preserving permissions for ‘/rds/general/user/yy5819/home/test/YY5819_HPC_2019_main.R’: Stale file handle
+mv: failed to close ‘/rds/general/user/yy5819/home/test/YY5819_HPC_2019_main.R’: Stale file handle

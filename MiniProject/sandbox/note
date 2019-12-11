@@ -1,0 +1,7 @@
+create unique id for each curve in dataset
+plot model to see what the paras are doing
+main values are Tlag, Rmax(tan), Nmax(maxium of the capacity)
+find a good curve to fit
+use a function to get the starting values:
+estimate what they should be fit as many points as possible 
+use a normal distribution estimate to sample it around the estimated value

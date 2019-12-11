@@ -1,0 +1,71 @@
+            Time       PopBio                  Species  ... Temp                                           Citation Rep
+4098    1.486655     1.912512  Lactobaciulus plantarum  ...   10  Zwietering, M.H., De Wit, J.C., Cuppers, H.G.A...   1
+4090    2.824645     1.174915  Lactobaciulus plantarum  ...   10  Zwietering, M.H., De Wit, J.C., Cuppers, H.G.A...   1
+4097    4.270005     1.677982  Lactobaciulus plantarum  ...   10  Zwietering, M.H., De Wit, J.C., Cuppers, H.G.A...   1
+4101    5.011268     2.320542  Lactobaciulus plantarum  ...   10  Zwietering, M.H., De Wit, J.C., Cuppers, H.G.A...   1
+4099    6.390554     1.971999  Lactobaciulus plantarum  ...   10  Zwietering, M.H., De Wit, J.C., Cuppers, H.G.A...   1
+4091    7.765710     1.622304  Lactobaciulus plantarum  ...   10  Zwietering, M.H., De Wit, J.C., Cuppers, H.G.A...   1
+4092    9.886259     1.906564  Lactobaciulus plantarum  ...   10  Zwietering, M.H., De Wit, J.C., Cuppers, H.G.A...   1
+4093    9.911037     2.316330  Lactobaciulus plantarum  ...   10  Zwietering, M.H., De Wit, J.C., Cuppers, H.G.A...   1
+4094   14.127357     2.633237  Lactobaciulus plantarum  ...   10  Zwietering, M.H., De Wit, J.C., Cuppers, H.G.A...   1
+4100   17.614803     2.385898  Lactobaciulus plantarum  ...   10  Zwietering, M.H., De Wit, J.C., Cuppers, H.G.A...   1
+4095   18.372584     3.756816  Lactobaciulus plantarum  ...   10  Zwietering, M.H., De Wit, J.C., Cuppers, H.G.A...   1
+4096   20.422930     2.543220  Lactobaciulus plantarum  ...   10  Zwietering, M.H., De Wit, J.C., Cuppers, H.G.A...   1
+4088   23.247575     3.086611  Lactobaciulus plantarum  ...   10  Zwietering, M.H., De Wit, J.C., Cuppers, H.G.A...   1
+4087   23.264094     3.514373  Lactobaciulus plantarum  ...   10  Zwietering, M.H., De Wit, J.C., Cuppers, H.G.A...   1
+4089   23.931024     2.710212  Lactobaciulus plantarum  ...   10  Zwietering, M.H., De Wit, J.C., Cuppers, H.G.A...   1
+4086   23.980579     4.000378  Lactobaciulus plantarum  ...   10  Zwietering, M.H., De Wit, J.C., Cuppers, H.G.A...   1
+4084   27.468025     3.624624  Lactobaciulus plantarum  ...   10  Zwietering, M.H., De Wit, J.C., Cuppers, H.G.A...   1
+4083   27.480414     3.995189  Lactobaciulus plantarum  ...   10  Zwietering, M.H., De Wit, J.C., Cuppers, H.G.A...   1
+4085   30.938953     2.884422  Lactobaciulus plantarum  ...   10  Zwietering, M.H., De Wit, J.C., Cuppers, H.G.A...   1
+4082   30.988508     4.257520  Lactobaciulus plantarum  ...   10  Zwietering, M.H., De Wit, J.C., Cuppers, H.G.A...   1
+4079   31.025674     5.701381  Lactobaciulus plantarum  ...   10  Zwietering, M.H., De Wit, J.C., Cuppers, H.G.A...   1
+4072   31.161951    16.634092  Lactobaciulus plantarum  ...   10  Zwietering, M.H., De Wit, J.C., Cuppers, H.G.A...   1
+4078   31.721512     5.517926  Lactobaciulus plantarum  ...   10  Zwietering, M.H., De Wit, J.C., Cuppers, H.G.A...   1
+4073   31.853659    15.584878  Lactobaciulus plantarum  ...   10  Zwietering, M.H., De Wit, J.C., Cuppers, H.G.A...   1
+4081   36.588244     4.248688  Lactobaciulus plantarum  ...   10  Zwietering, M.H., De Wit, J.C., Cuppers, H.G.A...   1
+4074   36.695613     9.877191  Lactobaciulus plantarum  ...   10  Zwietering, M.H., De Wit, J.C., Cuppers, H.G.A...   1
+4080   37.304729     4.836242  Lactobaciulus plantarum  ...   10  Zwietering, M.H., De Wit, J.C., Cuppers, H.G.A...   1
+4077   37.333636     6.069437  Lactobaciulus plantarum  ...   10  Zwietering, M.H., De Wit, J.C., Cuppers, H.G.A...   1
+4069   42.382070    19.482865  Lactobaciulus plantarum  ...   10  Zwietering, M.H., De Wit, J.C., Cuppers, H.G.A...   1
+4075   43.316392     7.850948  Lactobaciulus plantarum  ...   10  Zwietering, M.H., De Wit, J.C., Cuppers, H.G.A...   1
+...          ...          ...                      ...  ...  ...                                                ...  ..
+3982  217.993251  2372.426604  Lactobaciulus plantarum  ...   10  Zwietering, M.H., De Wit, J.C., Cuppers, H.G.A...   1
+3978  219.689484  1554.968639  Lactobaciulus plantarum  ...   10  Zwietering, M.H., De Wit, J.C., Cuppers, H.G.A...   1
+3979  223.164541  1278.230151  Lactobaciulus plantarum  ...   10  Zwietering, M.H., De Wit, J.C., Cuppers, H.G.A...   1
+3977  224.628484  2112.523898  Lactobaciulus plantarum  ...   10  Zwietering, M.H., De Wit, J.C., Cuppers, H.G.A...   1
+3976  230.240608  2323.668840  Lactobaciulus plantarum  ...   10  Zwietering, M.H., De Wit, J.C., Cuppers, H.G.A...   1
+3975  236.826285  1401.797382  Lactobaciulus plantarum  ...   10  Zwietering, M.H., De Wit, J.C., Cuppers, H.G.A...   1
+3971  237.985670  3310.857829  Lactobaciulus plantarum  ...   10  Zwietering, M.H., De Wit, J.C., Cuppers, H.G.A...   1
+3969  238.263386  1876.217390  Lactobaciulus plantarum  ...   10  Zwietering, M.H., De Wit, J.C., Cuppers, H.G.A...   1
+3974  238.932381  1470.565179  Lactobaciulus plantarum  ...   10  Zwietering, M.H., De Wit, J.C., Cuppers, H.G.A...   1
+3970  239.014973  2813.934623  Lactobaciulus plantarum  ...   10  Zwietering, M.H., De Wit, J.C., Cuppers, H.G.A...   1
+3972  241.769415  1967.237194  Lactobaciulus plantarum  ...   10  Zwietering, M.H., De Wit, J.C., Cuppers, H.G.A...   1
+3973  242.090491  1567.328234  Lactobaciulus plantarum  ...   10  Zwietering, M.H., De Wit, J.C., Cuppers, H.G.A...   1
+3967  243.542045  2350.055243  Lactobaciulus plantarum  ...   10  Zwietering, M.H., De Wit, J.C., Cuppers, H.G.A...   1
+3968  247.019167  1963.411081  Lactobaciulus plantarum  ...   10  Zwietering, M.H., De Wit, J.C., Cuppers, H.G.A...   1
+3966  253.374619  3035.510329  Lactobaciulus plantarum  ...   10  Zwietering, M.H., De Wit, J.C., Cuppers, H.G.A...   1
+3962  261.378814  2118.014600  Lactobaciulus plantarum  ...   10  Zwietering, M.H., De Wit, J.C., Cuppers, H.G.A...   1
+3963  263.087435  1530.143837  Lactobaciulus plantarum  ...   10  Zwietering, M.H., De Wit, J.C., Cuppers, H.G.A...   1
+3959  263.911290  4049.152307  Lactobaciulus plantarum  ...   10  Zwietering, M.H., De Wit, J.C., Cuppers, H.G.A...   1
+3964  266.245546  1630.827163  Lactobaciulus plantarum  ...   10  Zwietering, M.H., De Wit, J.C., Cuppers, H.G.A...   1
+3960  266.286842  2255.915347  Lactobaciulus plantarum  ...   10  Zwietering, M.H., De Wit, J.C., Cuppers, H.G.A...   1
+3965  266.957902  1797.089320  Lactobaciulus plantarum  ...   10  Zwietering, M.H., De Wit, J.C., Cuppers, H.G.A...   1
+3961  270.494903  2403.418390  Lactobaciulus plantarum  ...   10  Zwietering, M.H., De Wit, J.C., Cuppers, H.G.A...   1
+3958  285.326356  6751.333632  Lactobaciulus plantarum  ...   10  Zwietering, M.H., De Wit, J.C., Cuppers, H.G.A...   1
+3956  288.766312  4212.106662  Lactobaciulus plantarum  ...   10  Zwietering, M.H., De Wit, J.C., Cuppers, H.G.A...   1
+3957  291.282270  7072.428709  Lactobaciulus plantarum  ...   10  Zwietering, M.H., De Wit, J.C., Cuppers, H.G.A...   1
+3955  294.645828  2420.950295  Lactobaciulus plantarum  ...   10  Zwietering, M.H., De Wit, J.C., Cuppers, H.G.A...   1
+3954  310.740938  2329.708333  Lactobaciulus plantarum  ...   10  Zwietering, M.H., De Wit, J.C., Cuppers, H.G.A...   1
+3953  314.290328  3434.280221  Lactobaciulus plantarum  ...   10  Zwietering, M.H., De Wit, J.C., Cuppers, H.G.A...   1
+3952  320.900783  2517.072103  Lactobaciulus plantarum  ...   10  Zwietering, M.H., De Wit, J.C., Cuppers, H.G.A...   1
+3951  345.070292  2934.025185  Lactobaciulus plantarum  ...   10  Zwietering, M.H., De Wit, J.C., Cuppers, H.G.A...   1
+
+[151 rows x 7 columns]
+try fitting
+DataProcessing.py:49: RuntimeWarning: overflow encountered in exp
+  return (N0 * Nmax * np.exp(rmax * t)) / (Nmax + N0 * (np.exp(rmax*t) - 1))
+in except
+==ID: 145
+====Fit: Failed
+The model function generated NaN values and the fit aborted! Please check your model function and/or set boundaries on parameters where applicable. In cases like this, using "nan_policy='omit'" will probably not work.

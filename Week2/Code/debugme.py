@@ -7,6 +7,7 @@ __version__ = '0.0.1'
 def createabug(x):
     y = x**4
     z = 0.
+    import pdb; pdb.set_trace()
     y = y/z
     return y
 

@@ -1,1 +1,0 @@
- ## which runs the whole project, right down to compilation of the LaTeX  document.

@@ -27,7 +27,7 @@ for(i  in  0:IDlen){
   if (i %% 10 == 0){
     print(paste("plotting ", i, " to ", i+9))
   }
-  name = analysisData[analysisData$ID==i, 1]
+  name = as.character(analysisData[analysisData$ID==i, 1])
   subt = paste("Temp: ", analysisData[analysisData$ID==i, 2],
                "Medium: ", analysisData[analysisData$ID==i, 3],
                "Species: ", analysisData[analysisData$ID==i, 4],
@@ -55,7 +55,7 @@ for(i  in  0:IDlen){
           axis.title = element_text(size = 8))
     theme_minimal()
   
-  filename <- paste("../Results/allPlots/",name,".pdf")
+  filename <- paste("../Results/allPlots/",name,".pdf",sep="")
   ggsave(filename, width = 7, height = 4)
 }
 

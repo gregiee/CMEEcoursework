@@ -1,5 +1,5 @@
 # MiniProject
-model fitting
+model fitting, full report see ../Code/minireport.pdf
 
 ## Author
 Yuchen Yang (yy5819@imperial.ac.uk)

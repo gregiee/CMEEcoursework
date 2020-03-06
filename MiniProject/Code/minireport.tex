@@ -71,18 +71,18 @@ citecolor=blue,
 \end{titlepage}
 \linenumbers
 \section*{Abstract}
-This study compares the Baranyi, Logistic, Gompertz, and the basic Polynomial(Cubic) model's behaviour in a bacterial growth data set using $AIC$, $\Delta AIC$, and $AIC weight$ (and reasons to exclude other indicators). The result indicates that the \textbf{Gompertz} model is the best model for fitting this general data set(regarded as best fit for a total of \textbf{182} times among other models, taking up \textbf{62.5\%} of the total data set groups), despite the fact that there are argument saying the more mechanistic Baranyi model would be better. The study also used a subset of \textbf{Tetraselmis tetrahele} in the data set to examine temperature's effect on model fitting's behaviour. The result from the Kruskal-Wallis Test indicates that models have shown a significant differences (Baranyi's $p-value = 0.001679$, Logistic's $p-value = 0.01684$, Gompertz's $p-value = 0.03801$, Polynomial's $p-value = 0.01672$) in their $AIC weight$ across different temperature groups. Finally, this study compared models' behaviour on the death phase of a growth curve and explore the reasons for those differences in performances.
+This study compares the Baranyi, Logistic, Gompertz, and the basic Polynomial(Cubic) model's behaviour in a bacterial growth data set using $AIC$, $\Delta AIC$, and $AIC weight$ (and reasons to exclude other indicators). The result indicates that the \textbf{Gompertz} model is the best model for fitting this general data set(regarded as best fit for a total of \textbf{182} times among other models, taking up \textbf{62.5\%} of the total data set groups), despite the fact that there are arguments saying the more mechanistic Baranyi model would be better. The study also used a subset of \textbf{Tetraselmis tetrahele} in the data set to examine temperature's effect on model fitting. The result from the Kruskal-Wallis Test indicates that models have shown a significant differences (Baranyi's $p-value = 0.001679$, Logistic's $p-value = 0.01684$, Gompertz's $p-value = 0.03801$, Polynomial's $p-value = 0.01672$) in their $AIC weight$ across different temperature groups. Finally, this study compared models' behaviour on the death phase of a growth curve and explore the reasons for those differences in performances.
 
 \section{Introduction}
 Mathematical models are used to understand and predict the growth of the bacterial population for quite a long time. Most bacterial growths in batch culture follow a distinct set of phases - lag phase, exponential phase and stationary phase, which would perfectly fit a sigmoid shape. The Gompertz model\parencite{gompertz1825xxiv} and the Logistic model \parencite{verhulst1838notice} are the most frequently used sigmoid models fitted to growth\parencite{tjorve2017use}. However, most of the time nowadays, taking measurement errors and the expected growth kinetics into consideration, food microbiology researches would use the logarithm of cell concentrations as raw data. Some of the papers are using those classical sigmoid growth models as above, but since the population is in the logarithm of the cell concentrations, the results are not as good\parencite{baranyi2011modelling}.
 Baranyi also pointed out that the reason those two models, while being very popular and useful, has their limitations, especially in fitting bacterial data, is that the original model's curve does not remain sigmoid shape, but rather a monotone shape in log-space. Hence they could fail to capture the lag phases, and so that the use of such models are limited\parencite{baranyi2011modelling}.\\
 It has been argued that the empirical models such as modified Gompertz and Logistic models were not as preferred as the more mechanistic models such as the Baranyi model even with the modifications for it to work better in log-space\parencite{juneja2009mathematical}. To compare and evaluate similarities and differences between the models behaviour on a general bacterial database, this study has chosen the Baranyi \parencite{baranyi1993non}, the Logistic, the Gompertz(both using the log-transformed formulation of Zwietering)\parencite{zwietering1990modeling} and the basic Polynomial(Cubic) model, from the most mechanistic to the least, to better understand the behavioural differences. \\
-Aside from understand how different models perform in a fitting practice, it is also interesting to understand what are the co-variate's role in this. Will a model's performance differ across different co-variate groups? Understanding this would be helpful for researchers to find find appropriate models to use in future analysis based on the condition of the data set.
+Aside from understanding how different models perform in a fitting practice, it is also interesting to understand what are the co-variates' role in this. Will a model's performance differ across different co-variate groups? Understanding this would be helpful for researchers to find appropriate models to use in future analysis based on the condition of the data set.
 the Polynomial model is introduced mainly to benchmark models' behaviour on a fourth stage that has not been very often mentioned - death phase. Since A Cubic model have a declined phase at the end, it may be quite good at capturing decline in population size after some maximum value (the carrying capacity) has been reached (the "death phase" of population growth)\parencite{buchanan1918life}, it is also interesting to see how different models are behaving in that period.\\
 To recap on the objectives:
 \begin{itemize}
-  \item This study would first compare the above-mentioned models' behaviour for a general bacterial data set, and determine which one fits better.
-  \item This study would help to understand different co-variates' (specifically focus on temperature) effect on model fitting performance.
+  \item This study would first compare the above-mentioned models' behaviour for a general bacterial data set, and determine which one fits the best.
+  \item This study would help to understand different co-variates' (specifically focus on temperature) effect on model fitting performances.
   \item This study will touch base on the death phase performances.
 \end{itemize}
 
@@ -176,11 +176,11 @@ Packages used in $Python$ are $pandas$, $math$, $numpy$, and $lmfit$. $ggplot2$ 
 \section{Result}
 \subsection{Post-Processing}
 \subsubsection{Bad Fit}
-Using values obtained according to section \ref{startingvalue}, 2 of fits returned a $result.success == False$, which would indicate unsuccessful fits due to not being able to converge. Upon further investigation, this is most certainly caused by having inappropriate initial value(larger than it should) for $r_{max}$. In order to get better initial values for the fit, a $while$ loop is introduced for a fit that is failing to converge, where it randomly samples a uniform distribution of ($\frac{r_{max}}{3}$ , $r_{max}$) to be the new $r_{max}$.\\
-There are other cases where there is an exception for $valueError$ and the fit is aborted. Based on the error message, it is caused by having negative values in the $log()$ function for the Banranyi model or overflow for $exp()$ for all the model. This requires further investigation on either manipulate the raw data more, or set boundaries to parameters, and will not be done in this particular study since the number of cases are small enough to ignore.
+Using values obtained according to section \ref{startingvalue}, 2 of all fits returned a $result.success == False$, which would indicate unsuccessful fits due to not being able to converge. Upon further investigation, this is most certainly caused by having inappropriate initial value(larger than it should) for $r_{max}$. In order to get better initial values for the fit, a \verb|while| loop is introduced for a fit that is failing to converge, where it randomly samples a uniform distribution of ($\frac{r_{max}}{3}$ , $r_{max}$) to be the new $r_{max}$.\\
+There are other cases where there is an exception for $valueError$ and the fit is aborted. Based on the error message, it is caused by having negative values in the \verb|log()| function for the Banranyi model or overflow for $exp()$ for all  models. This requires further investigation on either manipulate the raw data more, or set boundaries to parameters, and will not be done in this particular study since the number of cases are small enough to ignore.
 \subsubsection{Bad Data}
-A first look at $R^2$ overview from figure \ref{fig:r2} indicates  some out-liners in the $R^2$ distribution for all models. These indicate that although there is a fit for the corresponding data using that model, the goodness of fit is relatively bad(a low value in $R^2$).\\
-Here a threshold is set to $R^2 = 0.8$, since this value, as shown in the graph would help to exclude a maximum number of out-liners without losing too much information.
+A first look at $R^2$ overview from figure \ref{fig:r2} indicates some out-liners in the $R^2$ distribution for all models. These indicate that although there is a fit for the corresponding data using that model, the goodness of fit is relatively bad(a low value in $R^2$).\\
+Here, a threshold is set to $R^2 = 0.8$, since this value, as shown in the graph would help to exclude a maximum number of out-liners without losing too much information.
 \FloatBarrier
 \begin{figure}[!htbp]
     \centering
@@ -189,7 +189,7 @@ Here a threshold is set to $R^2 = 0.8$, since this value, as shown in the graph 
     \label{fig:r2}
 \end{figure}
 \FloatBarrier
-Figure \ref{fig:baddata} is an example of a data set where either all models' fit is bad($R^2 < 0.75$), or some of the model did not fit, and rest of the model indicated a bad fit. Before grading the model, data set groups that are similar to figure \ref{fig:baddata}, are excluded from the final evaluation data. Upon examination, all of these cases happened because the data set group itself is showing a bad shape, as could be seen in figure \ref{fig:baddata}. A total of 14 sets are excluded in this step, leaving the final count of data set groups to be 290. The majority of the data set groups are showing a good value in $R^2$, Which also indicates a pretty decent starting value choice.
+Figure \ref{fig:baddata} is an example of a data set where either all models' fit is bad($R^2 < 0.8$), or some of the model did not fit, and rest of the model indicated a bad fit. Before grading the model, data set groups that are similar to figure \ref{fig:baddata}, are excluded from the final evaluation data. Upon examination, all of these cases happened because the data set group itself is showing a bad shape, as could be seen in figure \ref{fig:baddata}. A total of 14 sets are excluded in this step, leaving the final count of data set groups to be 291. The majority of the data set groups are showing a good value in $R^2$, Which also indicates a pretty decent starting value choice.
 \FloatBarrier
 \begin{figure}[!htbp]
     \centering
@@ -229,7 +229,7 @@ $Polynomial$ & -18.89898 & 32.02988 & 1.108328e-07 & -16.95935 & 32.02988 & 0.91
 
 \subsection{Fit Result}
 \subsubsection{Overall}
-The final result for there models' fitting performances in the general data set can be seen in table \ref{tab: overallS}. The \textbf{Gompertz} model has the highest $P$ amongst all. It is the the best model for fitting this general data set, regarded as the best model to fit a data set group for a total of \textbf{182} times, taking up \textbf{62.5\%} of the total group size. The \textbf{Logistic} and \textbf{Baranyi} performed quite similarly with a percentage of \textbf{54.6} and \textbf{52.6} respectively.\\
+The final result for all models' fitting performances in the general data set can be seen in table \ref{tab: overallS}. The \textbf{Gompertz} model has the highest $P$ amongst all. It is the the best model for fitting this general data set, regarded as the best model to fit a data set group for a total of \textbf{182} times, taking up \textbf{62.5\%} of the all groups there are. The \textbf{Logistic} and \textbf{Baranyi} performed quite similarly with a percentage of \textbf{54.6} and \textbf{52.6} respectively following up the Gompertz.\\
 \FloatBarrier
 \begin{table}[!htbp]
 \begin{tabularx}{\linewidth}{X X X X X}
@@ -244,7 +244,7 @@ The final result for there models' fitting performances in the general data set 
 \FloatBarrier
 
 \subsubsection{ Co-variate Group Fit}
-Upon further examination of the data set, \textbf{Tetraselmis tetrahele} is used to conduct the analysis of model's performance differences across temperature groups in the next section, as it is the only specie in the data set that allows such analysis(5 repetitions under same medium in different temperature groups). However, this part will only illustrate  the overall fit results in different temperature groups. The data set used for this study contains 17 temperature groups from 0 to 37$^\circ C$. The final fit result for each group using each model can be seen in table \ref{tab: tempfit}. \textbf{10 out of 17 (58.82\%)} groups, the \textbf{Gompertz} model still kept the lead amongst others. The \textbf{Logistic} and \textbf{Baranyi} performed quite similarly again, taking the lead for \textbf{5 out of 17(29.41\%)} and \textbf{6 out of 17(35.29\%)} groups respectively. 
+Upon further examination of the data set, \textbf{Tetraselmis tetrahele} is used to conduct the analysis of model's performance differences across temperature groups in the next section, as it is the only species in the data set that allows such analysis(5 repetitions under same medium in different temperature groups). However, this part will only illustrate the overall fit results in different temperature groups, a detailed anaysis on \textbf{Tetraselmis tetrahele} will be done in the following section. The data set used for this study contains 17 temperature groups from 0 to 37$^\circ C$. The final fit result for each group using each model can be seen in table \ref{tab: tempfit}. \textbf{10 out of 17 (58.82\%)} groups, the \textbf{Gompertz} model still kept the lead amongst others. The \textbf{Logistic} and \textbf{Baranyi} performed quite similarly again, taking the lead for \textbf{5 out of 17(29.41\%)} and \textbf{6 out of 17(35.29\%)} groups respectively. 
 \begin{table}[!htbp]
 \begin{tabularx}{\linewidth}{X X X X X}
 \toprule  Temperature($^\circ C$) & Baranyi & Gompertz & Logistic & Polynomial \\
@@ -273,7 +273,7 @@ Upon further examination of the data set, \textbf{Tetraselmis tetrahele} is used
 \end{table}          
 \FloatBarrier
 
-Fit results in data set groups with and without a death phase are illustrated in table \ref{tab: deathfit}. The \textbf{Gompertz} model performed the best in data set groups without a death phase with, and was out performed by \textbf{Baranyi} when there is a death phase.
+Fit results in data set groups with and without a death phase are illustrated in table \ref{tab: deathfit}. The \textbf{Gompertz} model performed the best in data set groups without a death phase, and was out performed by \textbf{Baranyi} when there is a death phase.
 \FloatBarrier
 \begin{table}[!htbp]
 \begin{tabularx}{\linewidth}{X X X X X}
@@ -299,7 +299,7 @@ Further comparing the pairwise difference shows that the \textbf{Baranyi} has th
     \label{fig:tempwaic}
 \end{figure}
 \FloatBarrier
-Similarly for the death phase groups(seen in figure \ref{fig:deathphasewaic}), \textbf{Baranyi} and \textbf{Gompertz} model have shown a significant differences ($p-value = 0.04993$, $p-value = 0.02158$) in date set with and without a death phase at .05 significance level, suggesting that having a death phase in the data set group would probably affect these models' performances. The \textbf{Polynomial} and \textbf{Logistic} model have not shown a significant differences ($p-value = 0.6555$, $p-value = 0.8133$) in their performance across the two groups.
+Similarly for the death phase groups(seen in figure \ref{fig:deathphasewaic}), \textbf{Baranyi} and \textbf{Gompertz} model have shown a significant differences ($p-value = 0.04993$, $p-value = 0.02158$) in date set groups with and without a death phase at .05 significance level, suggesting that having a death phase in the data set group would probably affect these models' performances. The \textbf{Polynomial} and \textbf{Logistic} model have not shown a significant differences ($p-value = 0.6555$, $p-value = 0.8133$) in their performance across the two groups.
 \FloatBarrier
 \begin{figure}[!htbp]
     \centering
@@ -310,14 +310,14 @@ Similarly for the death phase groups(seen in figure \ref{fig:deathphasewaic}), \
 \FloatBarrier
 
 \section{Discussion}
-\subsection{Reasons For Performance Difference}
-Although the previous analysis has concluded there are performance differences for all four models, especially for the \textbf{Baranyi}, and some vague trends can be seen as in figure \ref{fig:tempwaic}, the results are only based on a rather small data subset($size = 92$) for \textbf{Tetraselmis tetrahele}. It is hardly an indication for anything solid.\\
+\subsection{Reasons For Performance Difference Amongst Temperature Groups}
+Although the previous analysis has concluded there are performance differences for all four models, especially for the \textbf{Baranyi}, and some vague trends can be seen as in figure \ref{fig:tempwaic} amongst different temperature groups, the results are only based on a rather small data subset($size = 92$) for \textbf{Tetraselmis tetrahele}. It is hardly an indication for anything solid.\\
 Also, the difference could be caused by different sample sizes, measurement errors, and so on. However, these errors are very hard to quantify.\\
-The fundamental question for model performance difference is probably much aligned with the fact on how temperature will affect the shape of the population growth curve for bacteria since models(excluding the \textbf{Polynomial}) used in this study indicate a very similar shape regardless.\\
+The fundamental question for model performance difference is probably much aligned with how temperature will affect the shape of the population growth curve for bacteria since models(excluding the \textbf{Polynomial}) used in this study indicate a very similar shape regardless.\\
 A proper investigation in the relationship between temperature and models' performances or any other biological parameters like $r_{max}$ should require much more experimental data, and the analysis should be conducted on a larger scale to limit the error brought by the data.
 \subsection{Death Phase And The Polynomial Model}
 The \textbf{Polynomial}(Cubic) model is introduced to mainly illustrate the disadvantages other models have regarding the fourth stage of bacterial growth curves - death phase - since it allows the curve to have a decreasing phase after hitting the maximum point.\\
-In reality, as shown in table \ref{tab: deathfit}, the behaviour of the Polynomial model is not better than any of the other models(Ranked the last). A closer look at a data set group that has a death phase(figure \ref{fig:deathphasedata}) may help to understand why it is the case.
+In reality, as shown in table \ref{tab: deathfit}, the behaviour of the Polynomial model is not better than any of the other models(ranked the last), and there is no significant difference in perfromance between the two groups. A closer look at a data set group that has a death phase(figure \ref{fig:deathphasedata}) may help to understand why this is the case.
 \FloatBarrier
 \begin{figure}[!htbp]
     \centering
@@ -326,8 +326,8 @@ In reality, as shown in table \ref{tab: deathfit}, the behaviour of the Polynomi
     \label{fig:deathphasedata}
 \end{figure}
 \FloatBarrier
-As can be seen, the data set group has shown a decline since $Time=200$, and models other than Polynomial are fitting the decline using a straight line. Although the Polynomial model is somehow catching the decline, the shape of the cubic model is relatively different from the 4-phased growth curve. Catching the decline in the data set group does not necessarily help with the overall fit result.\\
-However, the comparison does show the disadvantages of the other three models used in this study at catching the decline after the peak. It also shows that the Polynomial model, due to its nature of having an increase after the decline, is not the best at fitting the death phase.\\
+As can be seen, the data set group has shown a decline since $Time=200$, and models other than Polynomial are fitting the decline using a straight line. Although the Polynomial model is somehow catching the decline tendency, the shape of the Polynomial(Cubic) model is relatively different from the 4-phased growth curve - it needs two falls and one rise, or two rises and one fall. Because of this feature of the Polynomial(Cubic) curve, even though it has catched a vague and overall trend of a data set, it does not necessarily help with the overall fit result.\\
+However, the comparison does show the disadvantages of the other three models used in this study at catching the decline after the peak. It also shows that the Polynomial model, due to its nature, is not the best at fitting population growth curves.\\
 This could be a very rough first step of working on finding or building models that could work well for the 4-phased growth curve.
 \subsection{Future Work}
 There are more biology related analysis that could be done after understanding that the Gompertz model is the best model to use for this data set. An initial thought would be trying to understand the effect temperature has over $t_{lag}$ and $r_{max}$, since those are calculated each time the model fit a data set. A simple correlation and regression analysis could be done to understand the basic relationship, or using the new $time$ and $t_{lag}$, $time$ and $r_{max}$ data set, more models in relation to those variables could be bench-marked. However, since the focus of this study is fitting and comparing models for bacterial growth curves, those topics are not discussed.

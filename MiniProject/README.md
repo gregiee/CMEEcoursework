@@ -5,7 +5,9 @@ model fitting
 Yuchen Yang (yy5819@imperial.ac.uk)
 
     ```console
-    ## run the whole thing by doing:
+    ## results are already uploaded in case there's anything wrong with it..
+    ## but!
+    ## could also run the whole thing by doing and check if it works:
     bash run_MiniProject.sh
     ```
 

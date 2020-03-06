@@ -27,6 +27,9 @@ there are 4 directories.
     where original and processed data are stored
     ```
 - **Code** 
+    ```
+    where scripts are, also where the compiled .tex pdf is
+    ```
 - **Results** 
     - **allPlots** 
     ```

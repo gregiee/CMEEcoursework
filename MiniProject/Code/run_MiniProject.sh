@@ -22,3 +22,12 @@ echo "done"
 echo "running CompileLaTeX.sh"
 bash CompileLaTeX.sh minireport
 echo "done"
+
+mv minireport.pdf ../Report/minireport.pdf
+
+rm Rplots.pdf
+rm minireport.pdf
+rm minireport.blg
+rm minireport.run.xml
+rm minireport.bbl
+rm minireport-blx.bib

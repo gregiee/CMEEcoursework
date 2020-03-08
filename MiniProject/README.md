@@ -5,7 +5,7 @@ model fitting
 Yuchen Yang (yy5819@imperial.ac.uk)
 
     ```console
-    ## results are already uploaded in case there's anything wrong with it..
+    ## report is already uploaded in case there's anything wrong with it..
     ## but!
     ## could also run the whole thing by doing and check if it works:
     bash run_MiniProject.sh
@@ -42,6 +42,7 @@ there are 4 directories.
     where plots for analysis are stored
     ```
 - **Sandbox** 
+- **Report** 
 
 
 ### detailed script description

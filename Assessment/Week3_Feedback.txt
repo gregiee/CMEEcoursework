@@ -9,11 +9,11 @@ Note that:
 
 ======================================================================
 ======================================================================
-Your Git repo size this week is about 2.89 MiB on disk 
+Your Git repo size this week is about 40.39 MiB on disk 
 
 PART 1: Checking project workflow...
 
-Found the following directories in parent directory: Week1, Assessment, Week2, Week4, .git, Week3
+Found the following directories in parent directory: Week6, Week1, Week7, Assessment, HPC, ThesisProject, Week5, Week2, Week4, .git, Week3, MiniProject
 
 Found the following files in parent directory: README.txt, .gitignore
 
@@ -41,7 +41,7 @@ Every folder consists of three folders "Code", "Data", "Sandbox" and a README.tx
 ======================================================================
 Looking for the weekly directories...
 
-Found 4 weekly directories: Week1, Week2, Week3, Week4
+Found 7 weekly directories: Week1, Week2, Week3, Week4, Week5, Week6, Week7
 
 The Week3 directory will be assessed 
 
@@ -77,7 +77,7 @@ there are 4 directories.
 - **Results** 
 - **Sandbox** 
 
-### detailed script describution
+### detailed script description
 - basic_io.R
     ```R
     ##R input-output
@@ -208,10 +208,10 @@ ideally, Results directory should be empty other than, perhaps, a readme.
 
 Found 33 code files: browse.R, PP_Regress.R, Vectorize2.py, apply1.R, sample.R, control_flow.R, run_get_TreeHeight.sh, get_TreeHeight.py, Vectorize.sh, GPDD_Data.R, boilerplate.R, TreeHeight.R, PP_Lattice.R, next.R, Ricker.R, Girko.R, Vectorize1.R, SQLinR.R, break.R, plotLin.R, basic_io.R, Vectorize1.py, try.R, apply2.R, get_TreeHeight.R, TAutoCorr.R, Vectorize2.R, DataWrangTidy.R, preallocate.R, PP_Regress_loc.R, DataWrang.R, MyBars.R, autocorrelation.tex
 
-Found the following extra files: .Rhistory, Test.sqlite
+Found the following extra files: Rplots.pdf
 0.5 pt deducted per extra file
 
-Current Points = 99.0
+Current Points = 99.5
 
 ======================================================================
 Testing script/code files...
@@ -272,7 +272,7 @@ debug: browser()
 
 Code ran without errors
 
-Time consumed = 0.11696s
+Time consumed = 0.14810s
 
 ======================================================================
 Inspecting script file PP_Regress.R...
@@ -419,24 +419,27 @@ print(toc_vect-tic_vect)********************************************************
 Testing Vectorize2.py...
 
 Vectorize2.py is a Python script file;
- checking for docstrings...
 
-Found one or more doctrings!
+checking for docstrings...
+
+Found one or more docstrings and functions
+
+Current Points = 99.5
 
 Output (only first 500 characters): 
 
 **********************************************************************
 time spent for loop:
-0.7427856922149658
+0.6752128601074219
 ================================
 time spent for vect:
-0.003703594207763672
+0.0033659934997558594
 
 **********************************************************************
 
 Code ran without errors
 
-Time consumed = 0.89020s
+Time consumed = 0.81712s
 
 ======================================================================
 Inspecting script file apply1.R...
@@ -470,18 +473,18 @@ Testing apply1.R...
 Output (only first 500 characters): 
 
 **********************************************************************
- [1]  0.17618519  0.30439792  0.50148194  0.56909396  0.02858185 -0.84585764
- [7]  0.15946054  0.32695677  0.29121102  0.48440446
- [1] 0.9894889 0.6679242 1.1836871 1.0012719 1.3159910 1.0059954 2.4296417
- [8] 0.6890284 0.3222813 0.6147891
- [1]  0.24609973 -0.08353972  0.05664331 -0.21658329  0.45775884 -0.05378800
- [7]  0.62679505  0.08301691  0.46308856  0.41642462
+ [1]  0.33186704  0.45844968 -0.04132830 -0.07055469  0.37019037  0.15159360
+ [7] -0.18240497 -0.41530970  0.11683240  1.05252212
+ [1] 0.4073375 0.8111486 1.5166603 1.5142320 1.1087871 0.2965509 0.4923148
+ [8] 1.4008500 0.7512795 0.7533760
+ [1]  0.92244844  0.12480284  0.72075339 -0.06568269 -0.06779231  0.16996662
+ [7]  0.06903839  0.18572306  0.19957300 -0.48697319
 
 **********************************************************************
 
 Code ran without errors
 
-Time consumed = 0.06644s
+Time consumed = 0.10056s
 
 ======================================================================
 Inspecting script file sample.R...
@@ -572,16 +575,16 @@ Output (only first 500 characters):
 **********************************************************************
 [1] "The loopy, non-preallocation approach takes:"
    user  system elapsed 
-  0.032   0.000   0.032 
+  0.032   0.000   0.031 
 [1] "The loopy, but with preallocation approach takes:"
    user  system elapsed 
-  0.012   0.000   0.013 
+  0.016   0.000   0.014 
 [1] "The loopy, non-preallocation approach takes:"
    user  system elapsed 
-  0.012   0.000   0.012 
+  0.012   0.000   0.014 
 [1] "The vectorized sapply approach takes:"
    user  system elapsed 
-  0.012   0.000   0.011 
+  0.008   0.000   0.010 
 [1] "The vectorized lapply approach takes:"
    user  system elapsed 
   0.012   0.000   0.010 
@@ -590,7 +593,7 @@ Output (only first 500 characters):
 
 Code ran without errors
 
-Time consumed = 0.24651s
+Time consumed = 0.28935s
 
 ======================================================================
 Inspecting script file control_flow.R...
@@ -645,7 +648,6 @@ Output (only first 500 characters):
 
 **********************************************************************
 [1] "a is TRUE"
-[1] "Less than a half"
 [1] "1  squared is 1"
 [1] "2  squared is 4"
 [1] "3  squared is 9"
@@ -677,7 +679,7 @@ Output (only first 500 characters):
 
 Code ran without errors
 
-Time consumed = 0.08962s
+Time consumed = 0.13115s
 
 ======================================================================
 Inspecting script file run_get_TreeHeight.sh...
@@ -736,9 +738,9 @@ import pandas as pd
 import numpy as np
 import re
 
-def loadFile(path):
+def loadFile(filepath):
     """Read and load file, return data"""
-    data = pd.read_csv(path)
+    data = pd.read_csv(filepath)
     return data
 
 def TreeHeight(data):
@@ -750,9 +752,9 @@ def TreeHeight(data):
     data['height'] = height
     return data
 
-def writeFile(data, path):
+def writeFile(data, filepath):
     """write file to Result folder with a name InputFileName_treeheights.csv"""
-    file = re.findall(r"/+([\w\d]+).csv", sys.argv[1])
+    file = re.findall(r"/+([\w\d]+).csv", filepath)
     filename = file[0] + r'_treeheights.csv'
     path = '../Results/' + filename
     data.to_csv(path, index=False)
@@ -774,9 +776,12 @@ if(__name__ == "__main__"):
 Testing get_TreeHeight.py...
 
 get_TreeHeight.py is a Python script file;
- checking for docstrings...
 
-Found one or more doctrings!
+checking for docstrings...
+
+Found one or more docstrings and functions
+
+Current Points = 99.5
 
 Output (only first 500 characters): 
 
@@ -828,24 +833,24 @@ time spent for Vectorize1.R:
 ==================================
 [1] "Using loops, the time taken is:"
    user  system elapsed 
-  0.076   0.000   0.079 
+  0.076   0.004   0.079 
 [1] "Using the in-built vectorized function, the time taken is:"
    user  system elapsed 
-  0.004   0.000   0.002 
+  0.000   0.000   0.002 
 ==================================
 time spent for Vectorize1.py: 
 
 ==================================
 time spent for loop:
-0.2744297981262207
+0.275463342666626
 ================================
 time spent for vect:
-0
+0.
 **********************************************************************
 
 Code ran without errors
 
-Time consumed = 1.81061s
+Time consumed = 1.83455s
 
 ======================================================================
 Inspecting script file GPDD_Data.R...
@@ -939,7 +944,7 @@ Output (only first 500 characters):
 
 Code ran without errors
 
-Time consumed = 0.08403s
+Time consumed = 0.12277s
 
 ======================================================================
 Inspecting script file TreeHeight.R...
@@ -1046,7 +1051,7 @@ Output (only first 500 characters):
 
 Code ran without errors
 
-Time consumed = 0.11325s
+Time consumed = 0.14939s
 
 ======================================================================
 Inspecting script file PP_Lattice.R...
@@ -1151,7 +1156,7 @@ Output (only first 500 characters):
 
 Code ran without errors
 
-Time consumed = 0.08377s
+Time consumed = 0.12379s
 
 ======================================================================
 Inspecting script file Ricker.R...
@@ -1185,7 +1190,7 @@ Output (only first 500 characters):
 
 Code ran without errors
 
-Time consumed = 0.12895s
+Time consumed = 0.16505s
 
 ======================================================================
 Inspecting script file Girko.R...
@@ -1305,7 +1310,7 @@ Output (only first 500 characters):
 
 Code ran without errors
 
-Time consumed = 0.21775s
+Time consumed = 0.25327s
 
 ======================================================================
 Inspecting script file SQLinR.R...
@@ -1447,7 +1452,7 @@ i equals  9
 
 Code ran without errors
 
-Time consumed = 0.09539s
+Time consumed = 0.12227s
 
 ======================================================================
 Inspecting script file plotLin.R...
@@ -1597,24 +1602,27 @@ print(toc_vect-tic_vect)
 Testing Vectorize1.py...
 
 Vectorize1.py is a Python script file;
- checking for docstrings...
 
-Found one or more doctrings!
+checking for docstrings...
+
+Found one or more docstrings and functions
+
+Current Points = 99.5
 
 Output (only first 500 characters): 
 
 **********************************************************************
 time spent for loop:
-0.3305220603942871
+0.25719761848449707
 ================================
 time spent for vect:
-0.0006384849548339844
+0.0005879402160644531
 
 **********************************************************************
 
 Code ran without errors
 
-Time consumed = 0.48428s
+Time consumed = 0.40850s
 
 ======================================================================
 Inspecting script file try.R...
@@ -1655,22 +1663,19 @@ Testing try.R...
 Output (only first 500 characters): 
 
 **********************************************************************
-[1] "Mean of this sample was: 0.126311516448117"
-[1] "Mean of this sample was: 0.0825170609126312"
-[1] "Mean of this sample was: 0.013354506971902"
-[1] "Mean of this sample was: 0.128906717181433"
-[1] "Mean of this sample was: -0.184782349731285"
-[1] "Mean of this sample was: 0.144407913526481"
-[1] "Mean of this sample was: 0.255563726157879"
-[1] "Mean of this sample was: 0.17470302467416"
-[1] "Mean of this sample was: 0.0172851978065457"
-[1] "Mean of this sample was: -0.160568825937537"
-[1] "Mea
+[1] "Mean of this sample was: 0.0306354169902487"
+[1] "Mean of this sample was: 0.0845309468681998"
+[1] "Mean of this sample was: 0.012685070692507"
+[1] "Mean of this sample was: -0.0267001242727787"
+[1] "Mean of this sample was: 0.17581209519292"
+[1] "Mean of this sample was: 0.00720475699134362"
+[1] "Mean of this sample was: -0.0229107809442604"
+[1] "Mean of this sample was: 0.0132080788978258"
+[1] "Mean of this sample was: -0.0191339498989208"
+[1] "Mean of this sample was: -0.0443757669064481"
 **********************************************************************
 
 Encountered error (or warning):
-Error in doit(x) : Couldn't calculate mean: too few unique points!
-Error in doit(x) : Couldn't calculate mean: too few unique points!
 Error in doit(x) : Couldn't calculate mean: too few unique points!
 Error in doit(x) : Couldn't calculate mean: too few unique points!
 Error in doit(x) : Couldn't calculate mean: too few unique points!
@@ -1756,18 +1761,18 @@ Testing apply2.R...
 Output (only first 500 characters): 
 
 **********************************************************************
-            [,1]       [,2]       [,3]       [,4]        [,5]       [,6]
- [1,]  0.3291649 -1.3459781 -0.7094048  62.369003 -0.06114175  1.5586680
- [2,]  0.8951880 -0.3679665 -0.5579551 -63.903764 -0.79512567  0.4513842
- [3,] -3.1481922 -0.2891804  1.4810134   4.629476 -1.43944479 -0.8219187
- [4,]  1.6611479  0.6542213  0.3838905 -28.650044  0.74215679 -1.5330477
- [5,] -1.3582930 -0.2467600  0.1620873  83.948032 -1.32750685 -1.4200193
- [6,]  0.4248698  1.4609969 -1.2225955  49.466767 -1.23480773 -
+            [,1]        [,2]        [,3]       [,4]       [,5]      [,6]
+ [1,] -0.5243324  -11.130680 -0.33313615 -1.1766152  -88.13083 -64.55141
+ [2,]  0.3116253  106.293211 -0.11316684 -2.9229484  104.94145 -88.01889
+ [3,]  1.7563694   38.000710 -0.00519914  0.1255124   12.74122 136.55728
+ [4,] -1.4001469   78.805508 -0.77527187  0.7975020   53.55211 -48.25394
+ [5,] -1.6149458   25.687099  0.24713500 -1.6182867  110.79431  66.22844
+ [6,] -2.8368904 -144.195807 -0.05862261 -1.0259600  -10.41702 
 **********************************************************************
 
 Code ran without errors
 
-Time consumed = 0.10863s
+Time consumed = 0.13221s
 
 ======================================================================
 Inspecting script file get_TreeHeight.R...
@@ -1904,7 +1909,7 @@ Testing TAutoCorr.R...
 Output (only first 500 characters): 
 
 **********************************************************************
-[1] 2e-04
+[1] 0
 pdf 
   2 
 
@@ -1912,7 +1917,7 @@ pdf
 
 Code ran without errors
 
-Time consumed = 0.64633s
+Time consumed = 0.64547s
 
 ======================================================================
 Inspecting script file Vectorize2.R...
@@ -1966,16 +1971,16 @@ Output (only first 500 characters):
 **********************************************************************
 [1] "Non-vectorised Stochastic Ricker takes:"
    user  system elapsed 
-  0.304   0.004   0.309 
+  0.256   0.024   0.244 
 [1] "Vectorised Stochastic Ricker takes:"
    user  system elapsed 
-  0.008   0.000   0.010 
+  0.012   0.000   0.010 
 
 **********************************************************************
 
 Code ran without errors
 
-Time consumed = 0.40555s
+Time consumed = 0.37077s
 
 ======================================================================
 Inspecting script file DataWrangTidy.R...
@@ -2059,7 +2064,7 @@ Output (only first 500 characters):
 
 Code ran without errors
 
-Time consumed = 10.00546s
+Time consumed = 10.00466s
 
 ======================================================================
 Inspecting script file preallocate.R...
@@ -2131,7 +2136,7 @@ Output (only first 500 characters):
 
 Code ran without errors
 
-Time consumed = 0.12040s
+Time consumed = 0.15546s
 
 ======================================================================
 Inspecting script file PP_Regress_loc.R...
@@ -2410,6 +2415,6 @@ Ran into 14 errors
 
 FINISHED WEEKLY ASSESSMENT
 
-Current Points for the Week = 99.0
+Current Points for the Week = 99.5
 
 NOTE THAT THESE ARE POINTS, NOT MARKS FOR THE WEEK!

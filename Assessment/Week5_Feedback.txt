@@ -1,0 +1,90 @@
+Starting weekly assessment for Yuchen, Week5
+
+Current Points = 100
+
+Note that: 
+(1) Major sections begin with a double "====" line 
+(2) Subsections begin with a single "====" line 
+(3) Code output or text file content are printed within single "*****" lines 
+
+======================================================================
+======================================================================
+Your Git repo size this week is about 40.39 MiB on disk 
+
+PART 1: Checking project workflow...
+
+Found the following directories in parent directory: Week6, Week1, Week7, Assessment, HPC, ThesisProject, Week5, Week2, Week4, .git, Week3, MiniProject
+
+Found the following files in parent directory: README.txt, .gitignore
+
+Checking for key files in parent directory...
+
+Found .gitignore in parent directory, great! 
+
+Printing contents of .gitignore:
+**********************************************************************
+*~ 
+*.tmp
+*.Rhistory**********************************************************************
+
+Found README in parent directory, named: README.txt
+
+Printing contents of README.txt:
+**********************************************************************
+CMEE Coursework Repository
+Yuchen Yang ( yuchen.yang19@imperial.ac.uk ) 
+
+Each week's work could be found under "WeekX" folder.
+Every folder consists of three folders "Code", "Data", "Sandbox" and a README.txt detailing each week's scripts.
+**********************************************************************
+
+======================================================================
+Looking for the weekly directories...
+
+Found 7 weekly directories: Week1, Week2, Week3, Week4, Week5, Week6, Week7
+
+The Week5 directory will be assessed 
+
+======================================================================
+======================================================================
+PART 2: Checking weekly code and workflow...
+
+======================================================================
+Assessing WEEK5...
+
+Found the following directories: 
+
+Found the following files: README.md
+
+Checking for readme file in weekly directory...
+
+Found README in parent directory, named: README.md
+
+Printing contents of README.md:
+**********************************************************************
+# Week5
+GIS 
+
+## Author
+Yuchen Yang (yy5819@imperial.ac.uk)
+
+***
+
+## structure
+there are no directories.
+
+### detailed script description
+no working script
+**********************************************************************
+
+Code directory missing!
+Aborting this weeks assessment!
+
+======================================================================
+======================================================================
+
+FINISHED WEEKLY ASSESSMENT
+
+Current Points for the Week = 100
+
+NOTE THAT THESE ARE POINTS, NOT MARKS FOR THE WEEK!

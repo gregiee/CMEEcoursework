@@ -9,11 +9,11 @@ Note that:
 
 ======================================================================
 ======================================================================
-Your Git repo size this week is about 1.80 MiB on disk 
+Your Git repo size this week is about 40.39 MiB on disk 
 
 PART 1: Checking project workflow...
 
-Found the following directories in parent directory: Week1, Assessment, Week2, .git
+Found the following directories in parent directory: Week6, Week1, Week7, Assessment, HPC, ThesisProject, Week5, Week2, Week4, .git, Week3, MiniProject
 
 Found the following files in parent directory: README.txt, .gitignore
 
@@ -25,7 +25,7 @@ Printing contents of .gitignore:
 **********************************************************************
 *~ 
 *.tmp
-**********************************************************************
+*.Rhistory**********************************************************************
 
 Found README in parent directory, named: README.txt
 
@@ -41,7 +41,7 @@ Every folder consists of three folders "Code", "Data", "Sandbox" and a README.tx
 ======================================================================
 Looking for the weekly directories...
 
-Found 2 weekly directories: Week1, Week2
+Found 7 weekly directories: Week1, Week2, Week3, Week4, Week5, Week6, Week7
 
 The Week1 directory will be assessed 
 
@@ -267,29 +267,29 @@ rm: cannot remove '*.out': No such file or directory
 rm: cannot remove '*.snm': No such file or directory
 rm: cannot remove '*.toc': No such file or directory
 
-** (evince:11076): WARNING **: Error when getting information for file '/home/mhasoba/Documents/Teaching/IC_CMEE/2019-20/Coursework/StudentRepos/YuchenYang_YY5819/Week1/Code/.pdf': No such file or directory
+** (evince:12508): WARNING **: Error when getting information for file '/home/mhasoba/Documents/Teaching/IC_CMEE/2019-20/Coursework/StudentRepos/YuchenYang_YY5819/Week1/Code/.pdf': No such file or directory
 
-** (evince:11076): WARNING **: Error setting file metadata: No such file or directory
+** (evince:12508): WARNING **: Error setting file metadata: No such file or directory
 
-** (evince:11076): WARNING **: Error setting file metadata: No such file or directory
+** (evince:12508): WARNING **: Error setting file metadata: No such file or directory
 
-** (evince:11076): WARNING **: Error setting file metadata: No such file or directory
+** (evince:12508): WARNING **: Error setting file metadata: No such file or directory
 
-** (evince:11076): WARNING **: Error setting file metadata: No such file or directory
+** (evince:12508): WARNING **: Error setting file metadata: No such file or directory
 
-** (evince:11076): WARNING **: Error setting file metadata: No such file or directory
+** (evince:12508): WARNING **: Error setting file metadata: No such file or directory
 
-** (evince:11076): WARNING **: Error setting file metadata: No such file or directory
+** (evince:12508): WARNING **: Error setting file metadata: No such file or directory
 
-** (evince:11076): WARNING **: Error setting file metadata: No such file or directory
+** (evince:12508): WARNING **: Error setting file metadata: No such file or directory
 
-** (evince:11076): WARNING **: Error setting file metadata: No such file or directory
+** (evince:12508): WARNING **: Error setting file metadata: No such file or directory
 
-** (evince:11076): WARNING **: Error setting file metadata: No such file or directory
+** (evince:12508): WARNING **: Error setting file metadata: No such file or directory
 
-** (evince:11076): WARNING **: Error setting file metadata: No such file or directory
+** (evince:12508): WARNING **: Error setting file metadata: No such file or directory
 
-** (evince:11076): WARNING **: Error setting file metadata: No such file or directory
+** (evince:12508): WARNING **: Error setting file metadata: No such file or directory
 
 ======================================================================
 Inspecting script file tiff2png.sh...
@@ -341,13 +341,17 @@ File contents are:
 # Arguments: 1 -> tab delimited file
 # Date: Oct 2019
 
-echo "Creating a space seperated version of $1 ..."
- # % = For a given filename, whatever it might be, keep everything intact up to the .csv at the end, and replace the .csv with following string 
-cat $1 | tr -s "," " " >> ${1%.csv}_Converted.txt 
-echo "Done!"
-exit
-
-
+# add if statement to deal with empty input
+if [[ -z "$1" ]]; then
+	printf '%s\n' "No input entered"
+    exit 1
+else
+	echo "Creating a space seperated version of $1 ..."
+	 # % = For a given filename, whatever it might be, keep everything intact up to the .csv at the end, and replace the .csv with following string 
+	cat $1 | tr -s "," " " >> ${1%.csv}_Converted.txt 
+	echo "Done!"
+	exit
+fi
 **********************************************************************
 
 Testing csvtospace.sh...
@@ -355,14 +359,13 @@ Testing csvtospace.sh...
 Output (only first 500 characters): 
 
 **********************************************************************
-Creating a space seperated version of  ...
-Done!
+No input entered
 
 **********************************************************************
 
 Code ran without errors
 
-Time consumed = 0.00990s
+Time consumed = 0.00612s
 
 ======================================================================
 Inspecting script file FirstExample.tex...
@@ -428,7 +431,7 @@ Hello mhasoba
 
 Code ran without errors
 
-Time consumed = 0.00550s
+Time consumed = 0.00353s
 
 ======================================================================
 Inspecting script file FirstBiblio.bib...
@@ -511,7 +514,7 @@ Done!
 
 Code ran without errors
 
-Time consumed = 0.00734s
+Time consumed = 0.00713s
 
 ======================================================================
 Inspecting script file boilerplate.sh...
@@ -544,7 +547,7 @@ This is a shell script!
 
 Code ran without errors
 
-Time consumed = 0.00355s
+Time consumed = 0.00485s
 
 ======================================================================
 ======================================================================

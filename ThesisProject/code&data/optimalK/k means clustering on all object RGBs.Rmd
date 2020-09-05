@@ -1,0 +1,71 @@
+---
+title: "clustering colours of objects"
+author: "BE"
+date: "February 18, 2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(ggplot2)
+library(reshape2)
+library(plyr)
+library(ape)
+library(dplyr)
+library(dendextend)
+library(circlize)
+library(forcats)
+library(factoextra)
+library(NbClust)
+library(Rtsne)
+library(stringr)
+library(farver)
+library(data.table)
+```
+get data
+```{r}
+a<-read.csv("nonbook_motif_unique_rgb.csv", header=TRUE)
+````````
+We have kept about 4% of the pixels in the "good" images, just under a million of them. 
+
+FROM HERE, WRITE a function that repeatedly samples some manageble number of pixels, clusters them, and saves the output of c1$best. Then run that function say 100 times. We then pick the number of clusters that appears most often as our k. 
+
+sample some fraction of them.  Here I have sampled a tiny number --- since it's pretty slow
+``````{r}
+b3<-a%>%sample_frac(0.01)
+dim(b3)
+`````````
+Now we have 9700 unique pixels
+
+transform into LAB space
+```````{r}
+cols<-b3%>%
+ungroup()%>%
+select(red, green, blue)%>%
+as.matrix()
+labcols<-convert_colour(cols, from="rgb", to="lab")
+```````
+We are going to use the NbCluststr function. It will take a dissimilarity object that we provide it. But it also needs the original data which we reshape accordingly.It takes 65,000 rows max
+
+``````{r}
+d<-dist(labcols, method="euclidean")
+````````
+determine the best clustering solution
+`````{r}
+c1<-NbClust(data=labcols, diss = d, min.nc = 2, max.nc = 50, method ="kmeans", distance=NULL,index = "all", alphaBeale = 0.1)
+c1$Best.nc
+bestclusters<-as.data.frame(c1$Best.nc)
+````````
+plot silhoutte
+````{r}
+c2<-as.data.frame(c1$All.index)
+c2$k<-rownames(c2)
+c2$k<-as.numeric(c2$k)
+par(mfrow=c(1,1))
+ggplot(data=c2, aes(x=k, y=Silhouette))+
+geom_line()+
+theme_classic()
+``````

@@ -1,0 +1,40 @@
+{
+  "info": {
+    "description": "ImmersiveLimit Cigarette Butt Dataset",
+    "url": "http://www.immersivelimit.com",
+    "version": "0.1",
+    "year": 2020,
+    "contributor": "yuchen yang",
+    "date_created": "2020/07/27"
+  },
+  "licenses": [
+    {
+      "url": "",
+      "id": 0,
+      "name": "t"
+    }
+  ],
+  "images": [
+
+  ],
+  "annotations": [
+    
+  ],
+  "categories": [
+    {
+      "supercategory": "motif",
+      "id": 1,
+      "name": "saz"
+    },
+    {
+      "supercategory": "motif",
+      "id": 2,
+      "name": "carnation"
+    },
+    {
+      "supercategory": "motif",
+      "id": 3,
+      "name": "tulip"
+    }
+  ]
+}

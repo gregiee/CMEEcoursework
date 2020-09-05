@@ -1,0 +1,66 @@
+---
+title: "clustering colours of objects"
+author: "BE"
+date: "February 18, 2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+#library(ggplot2)
+#library(reshape2)
+#library(plyr)
+#library(ape)
+library(dplyr)
+#library(dendextend)
+#library(circlize)
+#library(forcats)
+#library(factoextra)
+#library(NbClust)
+#library(Rtsne)
+library(stringr)
+library(farver)
+library(data.table)
+#library(Spectrum)
+library(farver)
+```
+get data
+```{r}
+a<-read.csv("Iznik_12.0.csv", header=TRUE)
+a<-a%>%
+  filter(use_for_motif_classification==1)
+imagesuse<-as.character(a$image_id)
+b<-fread("all_motifs_all_rgb.csv", header=TRUE)
+```````
+This is a huge file. 
+
+First, let's limit ourselves to the good, non-book, images
+``````{r}
+b1<-b%>%
+filter(image_id%in%imagesuse)
+``````
+We're going to aim for 1000 pixels in all.But, to ensure diversity, we're going to sample from all images
+
+``````{r}
+path="/Users/Armand/Desktop/Iznik\ June\ 2020/clustering\ colours/samples"
+````````
+
+``````{r}
+sample<-c(1:100)
+for (i in sample){
+b2<-b1%>%
+group_by(image_id)%>%
+sample_n(100)%>%
+ungroup()
+#unique()
+b3<-b2%>%select(red, green, blue)%>%
+as.matrix()
+b4<-convert_colour(b3, from="rgb", to="lab")
+b4<-as.data.frame(b4)
+print(nrow(b4))
+write.csv(b4, file.path(path, paste("sample", i, "all_lab.csv", sep="_")), row.names=FALSE)
+}
+``````

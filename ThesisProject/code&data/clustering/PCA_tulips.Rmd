@@ -1,0 +1,246 @@
+---
+title: "aligning and scaling and PCA"
+output: html_document
+---
+
+`````{r}
+rm(list=ls())
+``````
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+````{r include=FALSE}
+#library(lubridate)
+library(dplyr)
+library(data.table)
+#library(stringr)
+library(ggplot2)
+library(Momocs)
+#library(wesanderson)
+#library(DescTools)
+#library(PBSmapping)
+#library(desc)
+library(jtools)
+library(Momocs)
+library(tidyr)
+library("ggimage")
+````
+
+## Preliminary data treatment
+
+```{r}
+a<-read.csv("resampled_scaled_smoothed_rotated_tulips_220820.csv")
+# b<-read.csv("resampled_scaled_smoothed_rotated_carnations.csv")
+a$motif_family<-"tulip"
+# b$motif_family<-"carnation"
+
+c<-a
+length(unique(c$object_id))
+
+c<-c%>%
+  arrange(motif_family, object_id, point_order)
+``````
+
+sorting out some point order reversed images
+
+``````{r}
+fix<-c("BM27_0001_c","BM56_1_0004_t","NMS02_1_0000_t","SHM01_0008_t","VA59_3_0001_t")
+redo<-c%>%
+filter(object_id%in%fix)%>%
+group_by(object_id)%>%
+arrange(desc(point_order))%>%
+mutate(point_order=1:240)%>%
+arrange(point_order)%>%
+  as.data.frame()
+c2<-c%>%
+filter(!object_id%in%fix)%>%
+  as.data.frame()
+c3<-rbind(c2, redo)
+````````
+subset to one family
+```````{r}
+c3<-c3%>%filter(motif_family=="tulip")
+````````
+
+## Scaling, centering, prelim aligning using Momocs
+
+split the dataframe into matrixes of individual objects.
+````{r}
+a6<-split(c3,list(c3$object_id),drop=TRUE)
+a7<-lapply(a6,function(x){as.matrix(x[,c(2,3)])})
+a8<-Out(a7) #builds an outline coo object
+````
+scale
+````{r}
+a9<-a8%>%coo_scale
+````````
+centre on the origin
+````{r}
+a11<-a9%>%coo_centre
+`````
+unlist the scaled, centred, smoothed data
+````{r}
+a12<- unlist(lapply(a11, function(x) if(is.data.frame(x)) list(x) else x), recursive = FALSE)
+a13<-do.call(rbind, a12)
+names(a13)<-c("x", "y")
+a13<-a13%>%
+  arrange()
+m<-c3%>%
+  select(object_id, motif_family, point_order)%>%
+  arrange(object_id, point_order)
+a14<-cbind(a13, m)
+``````
+
+``````{r}
+#ggplot(data=a14, aes(x=x, y=y))+
+#geom_polygon(fill="grey", colour="grey", alpha=0.25, size=1)+
+#geom_point(data=a14, aes(x=x, y=y, colour=point_order), size=1)+
+#geom_point(data=a14, aes(x=x, y=y, colour=point_order), size=1)+
+#ylim(-3,3)+
+#xlim(-3,3)+
+#guides(colour=FALSE)+
+#facet_wrap(~object_id, ncol=34)+
+#theme_void()+
+#theme(aspect.ratio=1)+
+#scale_colour_gradient(low="red", high="blue")+
+#theme(strip.text.x = element_text(size = 10))
+#ggsave(filename="all objects.pdf", plot = last_plot(),
+#device = "pdf", scale = 1,width = 300,height = 300,units = c("cm"),dpi = 500, #limitsize = FALSE)
+```````
+make PCA data
+``````{r}
+a16<-pivot_wider(a14, -c(x), values_from=y, names_from=point_order)
+pca_data_y<-a16%>%
+select("1":"240")%>%
+as.data.frame()
+rownames(pca_data_y)<-as.character(a16$object_id)
+pca_data_y<-pca_data_y
+
+id <- sort(unique(a16$object_id), decreasing = FALSE)
+a <- a14 %>% 
+  group_by(object_id) %>% 
+  arrange(desc(object_id)) %>%
+  select(x, y)  %>%
+  group_map(~ c(t(.x)))
+aa <- data.frame(Reduce(rbind, a))
+pcaraw <- cbind(id=id, aa)
+
+coord <- pcaraw[,-1]
+rownames(coord) <- pcaraw[,1]
+```````
+PCA
+``````{r}
+pca_data<-pca_data_y
+pca<-princomp(pca_data)
+scores<-pca$scores
+scores<-as.data.frame(scores)
+summary(pca)
+scores<-scores%>%select(Comp.1:Comp.20)
+scores$object_id<-rownames(scores)
+m<-c3%>%
+  select(object_id, motif_family)%>%
+  unique()
+scores<-merge(scores, m, by="object_id")
+`````````
+sample some objects for plotting as images and make them
+```````{r}
+left<-scores%>%filter(Comp.1<quantile(Comp.1, 0.01))%>%sample_frac(0.5)
+right<-scores%>%filter(Comp.1>quantile(Comp.1, 0.99))%>%sample_frac(0.5)
+bottom<-scores%>%filter(Comp.2<quantile(Comp.2, 0.01))%>%sample_frac(0.5)
+top<-scores%>%filter(Comp.2>quantile(Comp.2, 0.99))%>%sample_frac(0.5)
+middle<-scores%>%filter(Comp.1>quantile(Comp.1, 0.2) & Comp.1<quantile(Comp.1, 0.8) & Comp.2>quantile(Comp.2, 0.2) & Comp.2<quantile(Comp.2, 0.8))
+middle<-middle%>%sample_n(15)
+samp<-rbind(left, right, bottom, top, middle)
+
+#samp<-scores%>%
+#sample_n(50)
+object_id<-sort(unique(as.character(samp$object_id)))
+length(object_id)
+for(i in object_id){
+col<-scores%>%filter(object_id==i)
+col<-col$colour
+ggplot()+
+geom_polygon(data=a14%>%filter(object_id==i), 
+aes(x=x, y=y), fill="blue4", colour="grey50")+
+theme_classic()+
+guides(fill=FALSE)+
+ylim(-2.5, 2.5)+
+xlim(-2.5, 2.5)+
+theme_void()+
+theme(aspect.ratio=1)+
+theme(strip.text.x = element_text(size = 10), 
+panel.background = element_rect(fill = "white",colour = "white"))
+name<-paste(i, ".jpg", sep ="")
+print(name)
+print(col)
+ggsave(filename=name, plot = last_plot(),
+device = "jpeg",
+path = "imageforpcplot", scale = 1,width = 3,height = 3,units = c("cm"),dpi = 500)
+}
+```````
+
+get address of images to plot
+``````{r}
+path="imageforpcplot"
+file_name<- list.files(path=path, pattern = c("*.jpg"))
+images<-as.data.frame(file_name)
+images$object_id<-gsub("\\.jpg", "",images$file_name)
+images$file_path<-file.path(path, images$file_name, fsep = .Platform$file.sep)
+images<-merge(images, scores, by="object_id")
+````````
+plot PCs
+```````{r}
+#pal<-c("red", "blue")
+ggplot()+
+geom_point(data=scores, aes(x=Comp.1, y=Comp.2), alpha=0.5, size=0.5, colour="blue4")+
+#scale_colour_manual(values=pal)+
+geom_image(data=images, aes(x=Comp.1, y=Comp.2, image=file_path), size=0.1, image_fun= function(.) magick::image_transparent(., "white"))+
+theme_classic()+
+theme(aspect.ratio = 1)+
+guides(colour=FALSE)+
+scale_x_continuous(name="shape PC1")+
+scale_y_continuous(name="shape PC2")
+ggsave(filename="tulips_pcplot_1_2.pdf", plot = last_plot(),
+device = "pdf", scale = 1,width = 10,height = 10,units = c("cm"),dpi = 500, useDingbats = FALSE)
+``````
+
+
+```````{r}
+write.csv(scores, "all_tulips_shape_pca.csv", row.names=FALSE)
+``````
+
+look at outliers
+
+
+out<-scores%>%
+  filter(Comp.2>5)
+out<-out$object_id
+
+
+outdata<-comb%>%
+  filter(object_id%in%out)
+ggplot(outdata, aes(x=x, y=y, colour=point_order))+
+geom_point(alpha=0.25)+
+geom_polygon(alpha=0.25)+
+facet_wrap(~object_id, ncol=3)+
+ylim(-3,3)+
+xlim(-3,3)+
+theme_classic()+
+theme(aspect.ratio = 1)
+
+low<-scores%>%
+  filter(Comp.2< -3)
+low<-low$object_id
+lowdata<-comb%>%
+  filter(object_id%in%low)
+ggplot(lowdata, aes(x=x, y=y, colour=point_order))+
+geom_point(alpha=0.25)+
+geom_polygon(alpha=0.25)+
+facet_wrap(~object_id, ncol=3)+
+ylim(-3,3)+
+xlim(-3,3)+
+theme_classic()+
+theme(aspect.ratio = 1)
+

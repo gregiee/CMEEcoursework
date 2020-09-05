@@ -1,0 +1,271 @@
+---
+title: "assemble all rgb files"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+setwd("~/Desktop/t02comparepal")
+```
+
+`````{r}
+library(readr)
+library(dplyr)
+library(data.table)
+library(stringr)
+library(ggplot2)
+library(tidyverse)  # data manipulation
+library(cluster)    # clustering algorithms
+library(factoextra) # clustering algorithms & visualization
+library(fpc)
+`````
+
+`````{r}
+files<- list.files(pattern = "*.csv")
+a2<-lapply(files, read_csv) 
+a3<-lapply(a2, as.data.frame)
+a4<- mapply(cbind, a3, "files"=gsub("_rgb.csv","",files), SIMPLIFY=F)
+a5<-do.call(rbind.data.frame, a4)
+dim(a5)
+```````
+remove white
+```````{r}
+a6<-a5%>%
+  filter(red!=1 & green!=1 & blue!=1)
+`````````
+
+get names
+````{r}
+n1<-as.data.frame(str_split_fixed(as.character(a6$files),"_", 2))
+options(max.print = 99999999)
+motif_id<-as.character(n1$V1)
+colour_id<-as.character(n1$V2)
+a6$motif_id<-motif_id
+a6$colour_id<-colour_id
+``````
+check distributions of values by colour
+``````{r}
+# aa6<-sample_n(a6, 30000)
+ggplot(a6, aes(x=green))+
+geom_histogram(bins=400)+
+coord_cartesian(xlim=c(0.7, 1))+
+# facet_wrap(~colour_id, scales="free_y")+
+theme_classic()
+``````
+What are they?
+`````{r}
+max(a6$red)
+max(a6$blue)
+max(a6$green)
+```````
+
+There are a lot of very bright pixels: subwhites. What are they?
+`````{r}
+check<-a6%>%
+  group_by(colour_id)%>%
+  filter(red==max(red) & blue==max(blue) & green==max(green))
+nrow(check)/nrow(a6)*100
+```````
+So about 5% of pixels are 0.996 in all rgb. These are the peak
+remove them
+``````{r}
+a7<-a6%>%
+  filter(red!=max(red) & blue!=max(blue) & green!=max(green))
+````````
+
+``````{r}
+ggplot(a7, aes(x=green))+
+geom_histogram(bins=300)+
+# facet_wrap(~colour_id, scales="free_y")+
+coord_cartesian(xlim=c(0.7, 1))+
+theme_classic()
+``````
+the distribution looks much more reasonable now
+`````{r}
+write.csv(a7, "data/Iznik_canonical_colours_190620.csv", row.names=FALSE)
+``````
+get unique color and convert to lab
+`````{r}
+# aa7 <- read.csv(file = 'data/Iznik_canonical_colours_190620.csv')
+aa7 <- read.csv(file = 'data/nonbook_motif_unique_rgb.csv')
+a8<-aa7 %>% distinct(blue, green, red)
+a8[, c("l","a","b")] <- convertColor(a8[, c("red","green","blue")], from = "sRGB", to = "Lab", scale.in = 1, scale.out = 1)
+a9<-a8[, c("l","a","b")]
+``````
+finding optimum K
+elbow
+`````{r}
+wssplot <- function(data, nc=15, seed=123){
+               wss <- (nrow(data)-1)*sum(apply(data,2,var))
+               for (i in 2:nc){
+                    set.seed(seed)
+                    wss[i] <- sum(kmeans(data, centers=i)$withinss)}
+                plot(1:nc, wss, type="b", xlab="Number of groups",
+                     ylab="Sum of squares within a group")}
+
+wssplot(a9, nc = 50)
+``````
+
+average silhouette score:
+`````{r}
+aa9<-a9%>%sample_frac(0.05)
+silhouette_score <- function(k){
+  km <- kmeans(aa9, centers = k)
+  ss <- silhouette(km$cluster, dist(aa9))
+  mean(ss[, 3])
+}
+k <- 2:25
+avg_sil <- sapply(k, silhouette_score)
+plot(k, type='b', avg_sil, xlab='Number of clusters', ylab='Average Silhouette Scores', frame=FALSE)
+
+``````
+
+try clustering
+`````{r}
+set.seed(123)
+c6<-kmeans(a9, centers = 6)
+c11<-kmeans(a9, centers = 11)
+c18<-kmeans(a9, centers = 18)
+``````
+colors
+`````{r}
+ss6<-as.data.frame(c6$centers)
+ss6[, c("R","G","B")] <- convertColor(ss6[, c("l","a","b")], from = "Lab", to = "sRGB", scale.in = 1, scale.out = 255)
+ss11<-as.data.frame(c11$centers)
+ss11[, c("R","G","B")] <- convertColor(ss11[, c("l","a","b")], from = "Lab", to = "sRGB", scale.in = 1, scale.out = 255)
+ss18<-as.data.frame(c18$centers)
+ss18[, c("R","G","B")] <- convertColor(ss18[, c("l","a","b")], from = "Lab", to = "sRGB", scale.in = 1, scale.out = 255)
+draw <- function(data){
+  image(1:nrow(data), 1, as.matrix(1:nrow(data)),
+      col=rgb(data$R, data$G, data$B, maxColorValue=255),
+      xlab="", ylab = "", xaxt = "n", yaxt = "n", bty = "n")
+}
+draw(ss6)
+draw(ss11)
+draw(ss18)
+``````
+read salims pal
+`````{r}
+salimpal18<-read.csv(file = 'data/palette_18_unconstrained_202018_170620.csv')
+image(1:nrow(salimpal18), 1, as.matrix(1:nrow(salimpal18)),
+      col=rgb(salimpal18$R, salimpal18$G, salimpal18$B, maxColorValue = 255),
+      xlab="", ylab = "", xaxt = "n", yaxt = "n", bty = "n")
+``````
+`````{r}
+salimpal18<-read.csv(file = 'data/palette_10_unconstrained_202010test.csv')
+image(1:nrow(salimpal18), 1, as.matrix(1:nrow(salimpal18)),
+      col=rgb(salimpal18$R, salimpal18$G, salimpal18$B, maxColorValue = 255),
+      xlab="", ylab = "", xaxt = "n", yaxt = "n", bty = "n")
+``````
+read salims 11 pal
+`````{r}
+salimpal11<-read.csv(file = 'data/palette_11_unconstrained_250620.csv')
+image(1:nrow(salimpal11), 1, as.matrix(1:nrow(salimpal11)),
+      col=rgb(salimpal11$R, salimpal11$G, salimpal11$B, maxColorValue = 255),
+      xlab="", ylab = "", xaxt = "n", yaxt = "n", bty = "n")
+``````
+
+read expert pal
+`````{r}
+expert<-read.csv(file = 'data/expert.csv')
+image(1:nrow(expert), 1, as.matrix(1:nrow(expert)),
+      col=rgb(expert$R, expert$G, expert$B, maxColorValue = 255),
+      xlab="", ylab = "", xaxt = "n", yaxt = "n", bty = "n")
+``````
+compare both pals in rgb
+`````{r}
+library('Ternary')
+c6<-ss6[, c("R","G","B")]
+c11<-ss11[, c("R","G","B")]
+c18<-ss18[, c("R","G","B")]
+o18<-salimpal18[, c("R","G","B")]
+o11<-salimpal11[, c("R","G","B")]
+e<-expert[, c("R","G","B")]
+total <- dplyr::bind_rows(list(o18=o18, o11=o11, c6=c6, c11=c11, c18=c18, e=e), .id = 'source')
+data_points <- total
+par(mar = rep(0, 4))
+# 11, kmean vs salim
+TernaryPlot(alab="Redder \u2192", blab="\u2190 Greener", clab="Bluer \u2192",xlim=c(-0.3, 0.2), ylim=c(0.1, 0.6), padding=0.04)
+
+AddToTernary(points, data_points[data_points$source == "c11",  c("R","G","B")] , pch=23, cex=2, 
+             bg=apply(data_points[data_points$source == "c11",  c("R","G","B")], 1,
+                       function (x) rgb(x[1], x[2], x[3], 180, maxColorValue=255))
+             )
+AddToTernary(points, data_points[data_points$source == "o11",  c("R","G","B")] , pch=21, cex=2, 
+             bg=apply(data_points[data_points$source == "o11",  c("R","G","B")], 1,
+                       function (x) rgb(x[1], x[2], x[3], 180, maxColorValue=255))
+             )
+AddToTernary(text, data_points[data_points$source %in% c("o11", "c11"), c("R","G","B")], data_points[data_points$source %in% c("o11", "c11"), "source"], cex=0.8, font=.8)
+
+# 18, kmean vs salim
+TernaryPlot(alab="Redder \u2192", blab="\u2190 Greener", clab="Bluer \u2192",xlim=c(-0.3, 0.2), ylim=c(0.1, 0.6), padding=0.04)
+
+AddToTernary(points, data_points[data_points$source == "c18",  c("R","G","B")] , pch=23, cex=2, 
+             bg=apply(data_points[data_points$source == "c18",  c("R","G","B")], 1,
+                       function (x) rgb(x[1], x[2], x[3], 180, maxColorValue=255))
+             )
+AddToTernary(points, data_points[data_points$source == "o18",  c("R","G","B")] , pch=21, cex=2, 
+             bg=apply(data_points[data_points$source == "o18",  c("R","G","B")], 1,
+                       function (x) rgb(x[1], x[2], x[3], 180, maxColorValue=255))
+             )
+AddToTernary(text, data_points[data_points$source %in% c("o18", "c18"), c("R","G","B")], data_points[data_points$source %in% c("o18", "c18"), "source"], cex=0.8, font=.8)
+
+# 6,11,18,e kmean
+TernaryPlot(alab="Redder \u2192", blab="\u2190 Greener", clab="Bluer \u2192",xlim=c(-0.3, 0.2), ylim=c(0.1, 0.6), padding=0.04)
+
+AddToTernary(points, data_points[data_points$source == "c11",  c("R","G","B")] , pch=21, cex=2, 
+             bg=apply(data_points[data_points$source == "c11",  c("R","G","B")], 1,
+                       function (x) rgb(x[1], x[2], x[3], 180, maxColorValue=255))
+             )
+AddToTernary(points, data_points[data_points$source == "c18",  c("R","G","B")] , pch=23, cex=1, 
+             bg=apply(data_points[data_points$source == "c18",  c("R","G","B")], 1,
+                       function (x) rgb(x[1], x[2], x[3], 180, maxColorValue=255))
+             )
+AddToTernary(points, data_points[data_points$source == "e",  c("R","G","B")] , pch=22, cex=2, 
+             bg=apply(data_points[data_points$source == "e",  c("R","G","B")], 1,
+                       function (x) rgb(x[1], x[2], x[3], 180, maxColorValue=255))
+             )
+AddToTernary(text, data_points[data_points$source %in% c("c11", "c18", "e"), c("R","G","B")], data_points[data_points$source %in% c("c11", "c18", "e"), "source"], cex=0.8, font=.8)
+
+# 11,18 salim
+TernaryPlot(alab="Redder \u2192", blab="\u2190 Greener", clab="Bluer \u2192",xlim=c(-0.3, 0.2), ylim=c(0.1, 0.6), padding=0.04)
+
+AddToTernary(points, data_points[data_points$source == "o18",  c("R","G","B")] , pch=21, cex=4, 
+             bg=apply(data_points[data_points$source == "o18",  c("R","G","B")], 1,
+                       function (x) rgb(x[1], x[2], x[3], 150, maxColorValue=255))
+             )
+AddToTernary(points, data_points[data_points$source == "o11",  c("R","G","B")] , pch=23, cex=3, 
+             bg=apply(data_points[data_points$source == "o11",  c("R","G","B")], 1,
+                       function (x) rgb(x[1], x[2], x[3], 250, maxColorValue=255))
+             )
+# AddToTernary(points, data_points[data_points$source == "e",  c("R","G","B")] , pch=22, cex=2, 
+#              bg=apply(data_points[data_points$source == "e",  c("R","G","B")], 1,
+#                        function (x) rgb(x[1], x[2], x[3], 180, maxColorValue=255))
+#              )
+AddToTernary(text, data_points[data_points$source %in% c("o11"), c("R","G","B")], data_points[data_points$source %in% c("o11"), "source"], cex=0.8, font=.4, col="gray")
+
+# add lab back
+data_points[, c("L","A","B1")] <- convertColor(data_points[, c("R","G","B")], from = "sRGB", to = "Lab", scale.in = 255, scale.out = 1)
+``````
+`````{r}
+library(plotly)
+c1<- apply(data_points[data_points$source %in% c("o18", "o11"),  c("R","G","B")], 1, function (x) rgb(x[1], x[2], x[3], 180, maxColorValue=255))
+
+data_points$shape <- ifelse(data_points$source == "o18", "cross", "circle")
+
+fig <- plot_ly(data_points[data_points$source %in% c("o18", "o11"),], x = ~B1, y = ~A, z = ~L, symbol = ~I(shape), marker = list(color = c1))
+fig <- fig %>% add_markers()
+fig <- fig %>% layout(scene = list(xaxis = list(title = 'b'),
+                                   yaxis = list(title = 'a'),
+                                   zaxis = list(title = 'l')),
+                      annotations = list(
+                        x = 1.13,
+                        y = 1.05,
+                        text = 'Miles/(US) gallon',
+                        xref = 'paper',
+                        yref = 'paper',
+                        showarrow = FALSE
+                        ),
+                      paper_bgcolor='rgba(220, 220, 220, .5)')
+fig
+``````

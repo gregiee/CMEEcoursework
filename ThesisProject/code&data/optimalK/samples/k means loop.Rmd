@@ -1,0 +1,44 @@
+---
+title: "clustering colours of objects"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+
+library(dplyr)
+library(factoextra)
+library(NbClust)
+library(data.table)
+```
+get data
+```{r}
+files<- list.files(pattern = "*.csv")
+````````
+write results
+``````{r}
+path="/Users/Armand/Desktop/Iznik\ June\ 2020/clustering\ colours/clustering_results"
+````````
+
+`````{r}
+files<-sample(files, 1)
+````````
+``````{r}
+for(i in files){
+a<-read.csv(i)
+#a1<-scale(a)
+a1<-as.matrix(a)
+s<-fviz_nbclust(a1, kmeans, diss=NULL, method = c("silhouette"),k.max=40, iter.max=30)## silhouette estimation
+w<-fviz_nbclust(a1, kmeans, diss=NULL, method = c("wss"),k.max=40, iter.max=30)## total sums squares estimation
+sres<-s$data## combine all results in a data frame
+sres<-as.data.frame(sres)
+names(sres)<-c("clusters", "silhouette_width")
+sres$sums_of_squares<-w$data$y
+print(i)
+write.csv(sres, file.path(path, paste("optimal_clustering", i, sep="_")), row.names=FALSE)
+}
+```````
+
